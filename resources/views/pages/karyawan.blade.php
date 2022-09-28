@@ -17,7 +17,8 @@
                     <div class="flex flex-col sm:flex-row items-center p-5 border-b border-slate-200/60">
                         <button class="btn btn-primary mr-1 mb-2" data-tw-toggle="modal"
                             data-tw-target="#add-data">Tambah Data</button>
-                        <button class="btn btn-secondary mr-1 mb-2">
+                        <button class="btn btn-secondary mr-1 mb-2" data-tw-toggle="modal"
+                            data-tw-target="#upload_file">
                             <i data-lucide="file-text" class="w-5 h-5 mr-1"></i> Import Excel
                         </button>
                     </div>
@@ -92,7 +93,7 @@
                 <h2 class="font-medium text-base mr-auto">Form Karyawan</h2>
             </div>
             <div class="modal-body">
-                <form action="POST">
+                <form action="" method="POST">
                     <div class="grid grid-cols-12 gap-4">
                         <div class="col-span-12 sm:col-span-12 xl:col-span-3">
                             <div class="mt-3">
@@ -200,15 +201,34 @@
                         </div>
                         <div class="col-span-12 sm:col-span-12 xl:col-span-8">
                             <div class="mt-3">
-                                <label for="tempat_lahir" class="form-label">Tempat Lahir</label>
-                                <textarea span="50" name="tempat_lahir" id="tempat_lahir" class="form-control"
-                                    required></textarea>
+                                <label for="alamat" class="form-label">Alamat</label>
+                                <textarea span="50" name="alamat" id="alamat" class="form-control" required></textarea>
                             </div>
                         </div>
                         <div class="col-span-12 mt-3">
                             <button type="submit" class="btn btn-primary mr-1">Submit</button>
                             <button type="reset" class="btn btn-secondary">Reset</button>
                         </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="upload_file" class="modal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body p-10 text-center">
+                <form class="w-full overflow-x-hidden" action="" method="POST">
+                    <label for="file" class="w-full flex flex-col px-4 py-6 border-2 border-blue-400 border-dashed">
+                        <input id="file" name="file" type="file"
+                            accept=".xlsx,.xlsm,.xltx,.xltm,.ods,.ots,.scv,.tsv,.xml" />
+                        <p class="text-slate-400 mt-5">Pilih file yang akan diupload. <br> <strong
+                                class="font-bold text-blue-500">Pastikan
+                                file sesuai format, agar tidak terjadi error saat upload</strong></p>
+                    </label>
+                    <div class="mt-10">
+                        <button type="submit" class="btn btn-primary btn-lg w-full">Submit</button>
                     </div>
                 </form>
             </div>
