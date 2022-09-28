@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Imports\KaryawanImport;
+use App\Models\Karyawan;
+use Illuminate\Support\Facades\Session;
 use Excel;
 
 class PageController extends Controller
@@ -16,7 +18,8 @@ class PageController extends Controller
 
     public function karyawan_view()
     {
-        return view('pages/karyawan');
+        $datas = Karyawan::latest()->paginate(7);
+        return view('pages/karyawan', [ 'karyawans' => $datas ]);
     }
 
     public function importFile(Request $request)
@@ -24,9 +27,11 @@ class PageController extends Controller
         if ($request->file('file')) {
             $import = Excel::import(new KaryawanImport, $request->file('file'));
             if ($import) {
-                return redirect('/data/karyawan')->with('success', 'Data berhasil ditambahkan');
+                Session::flash('success', 'Data berhasil ditambahkan');
+                return redirect('/data/karyawan');
             } else {
-                return redirect('/data/karyawan')->with('failed', 'Data gagal ditambahkan');
+                Session::flash('failed', 'Data berhasil ditambahkan');
+                return redirect('/data/karyawan');
             } 
         } else {
             return redirect('/data/karyawan')->with('info', 'Pilih file');

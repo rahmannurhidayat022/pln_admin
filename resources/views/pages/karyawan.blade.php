@@ -8,6 +8,8 @@
 <div class="grid grid-cols-12 gap-6">
     <div class="col-span-12 2xl:col-span-12">
         <div class="grid grid-cols-12 gap-6">
+            @extends('../layout/components/notif')
+
             <!-- BEGIN: General Report -->
             <div class="col-span-12 mt-8">
                 <div class="intro-y flex items-center h-10">
@@ -15,9 +17,9 @@
                 </div>
                 <div class="intro-y box mt-5">
                     <div class="flex flex-col sm:flex-row items-center p-5 border-b border-slate-200/60">
-                        <button class="btn btn-primary mr-1 mb-2" data-tw-toggle="modal"
-                            data-tw-target="#add-data">Tambah Data</button>
-                        <button class="btn btn-secondary mr-1 mb-2" data-tw-toggle="modal"
+                        <!-- <button class="btn btn-primary mr-1 mb-2" data-tw-toggle="modal"
+                            data-tw-target="#add-data">Tambah Data</button> -->
+                        <button class="btn btn-outline-primary mr-1 mb-2" data-tw-toggle="modal"
                             data-tw-target="#upload_file">
                             <i data-lucide="file-text" class="w-5 h-5 mr-1"></i> Import Excel
                         </button>
@@ -28,7 +30,7 @@
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
-                                            <th class="whitespace-nowrap">No</th>
+                                            <th class="whitespace-nowrap">NID</th>
                                             <th class="whitespace-nowrap">Nama</th>
                                             <th class="whitespace-nowrap">Jabatan</th>
                                             <th class="whitespace-nowrap">Grade</th>
@@ -38,13 +40,15 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @if(count($karyawans) > 0)
+                                        @foreach($karyawans as $item)
                                         <tr>
-                                            <td>1</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
+                                            <td>{{$item->nid}}</td>
+                                            <td>{{$item->nama}}</td>
+                                            <td>{{$item->jabatan}}</td>
+                                            <td>{{$item->grade}}</td>
+                                            <td>{{$item->bidang}}</td>
+                                            <td>{{$item->unit}}</td>
                                             <td>
                                                 <button class="btn btn-dark mr-1 mb-2">
                                                     <i data-lucide="eye" class="w-5 h-5"></i>
@@ -57,27 +61,13 @@
                                                 </button>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>
-                                                <button class="btn btn-dark mr-1 mb-2">
-                                                    <i data-lucide="eye" class="w-5 h-5"></i>
-                                                </button>
-                                                <button class="btn btn-warning mr-1 mb-2">
-                                                    <i data-lucide="edit" class="w-5 h-5"></i>
-                                                </button>
-                                                <button class="btn btn-danger mr-1 mb-2">
-                                                    <i data-lucide="trash" class="w-5 h-5"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
+                                        @endforeach
+                                        @endif
                                     </tbody>
                                 </table>
+                                <div class="mt-3">
+                                    {{ $karyawans->links('pagination::tailwind') }}
+                                </div>
                             </div>
                         </div>
                     </div>
