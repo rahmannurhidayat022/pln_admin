@@ -30,5 +30,6 @@ Route::middleware('auth')->group(function() {
     Route::controller(PageController::class)->group(function() {
         Route::get('/', 'dashboard')->name('dashboard');
         Route::get('/data/karyawan', 'karyawan_view')->name('karyawan');
+        Route::post('/uploads', 'importFile')->name('uploads');
     });
 });

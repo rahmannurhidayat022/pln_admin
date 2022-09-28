@@ -4,8 +4,9 @@ namespace App\Imports;
 
 use App\Models\Karyawan;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class KaryawanImport implements ToModel
+class KaryawanImport implements ToModel, WithHeadingRow
 {
     /**
     * @param array $row
@@ -14,21 +15,25 @@ class KaryawanImport implements ToModel
     */
     public function model(array $row)
     {
+        // var_dump($row);
+        // dd();
         return new Karyawan([
-            'nid' => $row[0],
-            'nama' => $row[1],
-            'jenis_kelamin' => $row[2],
-            'tempat_lahir' => $row[3],
-            'tanggal_lahir' => $row[4],
-            'telp' => $row[5],
-            'alamat' => $row[6],
-            'pendidikan' => $row[5],
-            'tipe_karyawan' => $row[6],
-            'tanggal_masuk' => $row[7],
-            'jabatan' => $row[8],
-            'grade' => $row[9],
-            'bidang' => $row[10],
-            'unit' => $row[11],
+            'nid' => $row['nid'],
+            'nama' => $row['nama'],
+            'jenis_kelamin' => $row['jenis_kelamin'],
+            'tempat_lahir' => $row['tempat_lahir'],
+            'tanggal_lahir' => $row['tanggal_lahir'],
+            'telp' => $row['telp'],
+            'email' => $row['email'],
+            'alamat' => $row['alamat'],
+            'pendidikan' => $row['pendidikan'],
+            'tipe_karyawan' => $row['tipe_karyawan'],
+            'tanggal_masuk' => $row['tanggal_masuk'],
+            'jabatan' => $row['jabatan'],
+            'grade' => $row['grade'],
+            'bidang' => $row['bidang'],
+            'unit' => $row['unit'],
+            'status' => $row['status']
         ]);
     }
 }

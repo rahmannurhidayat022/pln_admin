@@ -113,12 +113,12 @@
                                 <div class="flex flex-col sm:flex-row mt-2">
                                     <div class="form-check mr-2">
                                         <input id="laki-laki" class="form-check-input" type="radio" name="jenis_kelamin"
-                                            value="l">
+                                            value="laki-laki">
                                         <label class="form-check-label" for="laki-laki">Laki-laki</label>
                                     </div>
                                     <div class="form-check mr-2">
                                         <input id="perempuan" class="form-check-input" type="radio" name="jenis_kelamin"
-                                            value="p">
+                                            value="perempuan">
                                         <label class="form-check-label" for="perempuan">Perempuan</label>
                                     </div>
                                     <div class="form-check mr-2">
@@ -145,13 +145,13 @@
                         <div class="col-span-12 sm:col-span-12 xl:col-span-4">
                             <label for="pendidikan" class="form-label">Pendidikan Terakhir</label>
                             <select id="pendidikan" name="pendidikan" class="form-select mt-2 sm:mr-2">
-                                <option value="sma">SMA</option>
-                                <option value="d1">Diploma I</option>
-                                <option value="d2">Diploma II</option>
-                                <option value="d3">Diploma III</option>
-                                <option value="s1">Strata I</option>
-                                <option value="s2">Strata II</option>
-                                <option value="s3">Strata III</option>
+                                <option value="SMA">SMA</option>
+                                <option value="D1">Diploma I</option>
+                                <option value="D2">Diploma II</option>
+                                <option value="D3">Diploma III</option>
+                                <option value="S1">Strata I</option>
+                                <option value="S2">Strata II</option>
+                                <option value="S3">Strata III</option>
                             </select>
                         </div>
                         <div class="col-span-12 sm:col-span-12 xl:col-span-4">
@@ -205,6 +205,23 @@
                                 <textarea span="50" name="alamat" id="alamat" class="form-control" required></textarea>
                             </div>
                         </div>
+                        <div class="col-span-12 sm:col-span-12 xl:col-span-4">
+                            <div class="mt-3">
+                                <label>Jenis Kelamin</label>
+                                <div class="flex flex-col sm:flex-row mt-2">
+                                    <div class="form-check mr-2">
+                                        <input id="aktif" class="form-check-input" type="radio" name="status"
+                                            value="aktif">
+                                        <label class="form-check-label" for="aktif">Aktif</label>
+                                    </div>
+                                    <div class="form-check mr-2">
+                                        <input id="pasif" class="form-check-input" type="radio" name="status"
+                                            value="pasif">
+                                        <label class="form-check-label" for="pasif">Pasif</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="col-span-12 mt-3">
                             <button type="submit" class="btn btn-primary mr-1">Submit</button>
                             <button type="reset" class="btn btn-secondary">Reset</button>
@@ -219,10 +236,12 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-body p-10 text-center">
-                <form class="w-full overflow-x-hidden" action="" method="POST">
+                <form class="w-full overflow-x-hidden" action="{{route('uploads')}}" method="POST"
+                    enctype="multipart/form-data">
+                    @csrf
                     <label for="file" class="w-full flex flex-col px-4 py-6 border-2 border-blue-400 border-dashed">
                         <input id="file" name="file" type="file"
-                            accept=".xlsx,.xlsm,.xltx,.xltm,.ods,.ots,.scv,.tsv,.xml" />
+                            accept=".xlsx,.xlsm,.xltx,.xltm,.ods,.ots,.csv,.tsv,.xml" required />
                         <p class="text-slate-400 mt-5">Pilih file yang akan diupload. <br> <strong
                                 class="font-bold text-blue-500">Pastikan
                                 file sesuai format, agar tidak terjadi error saat upload</strong></p>

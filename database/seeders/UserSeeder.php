@@ -23,6 +23,7 @@ class UserSeeder extends Seeder
                 'email' => 'admin@pln.com',
                 'email_verified_at' => now(),
                 'password' => Hash::make('admin123'),
+                'gender' => 'laki-laki',
                 'active' => 1,
                 'remember_token' => Str::random(10)
             ]
