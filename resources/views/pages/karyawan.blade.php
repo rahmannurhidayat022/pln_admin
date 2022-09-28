@@ -5,6 +5,48 @@
 @endsection
 
 @section('subcontent')
+<script>
+let itemId;
+const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+function getId(id) {
+    itemId = id;
+    return;
+}
+
+function getHostUrl() {
+    const protocol = location.protocol;
+    const slashes = protocol.concat("//");
+    const host = slashes.concat(window.location.hostname);
+    const port = location.port;
+    return host + ':' + port;
+}
+
+async function removeItem() {
+    try {
+        const uri = getHostUrl() + '/data/karyawan/' + itemId;
+        const response = await fetch(uri, {
+            method: 'DELETE',
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'POST,GET,OPTIONS, PUT, DELETE',
+                'Access-Control-Allow-Headers': 'Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization',
+                'X-CSRF-TOKEN': token,
+            },
+            body: {
+                _token: token,
+                id: itemId,
+                _method: 'DELETE',
+            },
+        });
+        window.location.reload();
+        return;
+    } catch (error) {
+        console.error(error.message);
+    }
+}
+</script>
+
 <div class="grid grid-cols-12 gap-6">
     <div class="col-span-12 2xl:col-span-12">
         <div class="grid grid-cols-12 gap-6">
@@ -56,7 +98,8 @@
                                                 <button class="btn btn-warning mr-1 mb-2">
                                                     <i data-lucide="edit" class="w-5 h-5"></i>
                                                 </button>
-                                                <button class="btn btn-danger mr-1 mb-2">
+                                                <button class="btn btn-danger mr-1 mb-2" data-tw-toggle="modal"
+                                                    data-tw-target="#delete" onclick="getId({{$item->id}})">
                                                     <i data-lucide="trash" class="w-5 h-5"></i>
                                                 </button>
                                             </td>
@@ -244,4 +287,24 @@
         </div>
     </div>
 </div>
+
+<div id="delete" class="modal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body p-0">
+                <div class="p-5 text-center"> <i data-lucide="x-circle" class="w-16 h-16 text-danger mx-auto mt-3"></i>
+                    <div class="text-3xl mt-5">Are you sure?</div>
+                    <div class="text-slate-500 mt-2">Do you really want to delete these records? <br>This process cannot
+                        be undone.</div>
+                </div>
+                <div class="px-5 pb-8 text-center">
+                    <button type="button" data-tw-dismiss="modal"
+                        class="btn btn-outline-secondary w-24 mr-1">Cancel</button>
+                    <button type="button" class="btn btn-danger w-24" onclick="removeItem()">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 @endsection

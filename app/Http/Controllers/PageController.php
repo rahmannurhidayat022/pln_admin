@@ -37,4 +37,15 @@ class PageController extends Controller
             return redirect('/data/karyawan')->with('info', 'Pilih file');
         }
     }
+
+    public function removeRecord($id)
+    {
+        $res = Karyawan::find($id)->delete();
+        if (!$res) {
+            Session::flash('failed', 'Data gagal dihapus');
+            return redirect('/data/karyawan');
+        }
+        Session::flash('success', 'Data berhasil dihapus');
+        return redirect('/data/karyawan');
+    }
 }

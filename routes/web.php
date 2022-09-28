@@ -30,6 +30,7 @@ Route::middleware('auth')->group(function() {
     Route::controller(PageController::class)->group(function() {
         Route::get('/', 'dashboard')->name('dashboard');
         Route::get('/data/karyawan', 'karyawan_view')->name('karyawan');
+        Route::delete('/data/karyawan/{id}', 'removeRecord')->name('karyawan.delete');
         Route::post('/uploads', 'importFile')->name('uploads');
     });
 });
