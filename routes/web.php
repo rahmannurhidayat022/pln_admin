@@ -33,5 +33,7 @@ Route::middleware('auth')->group(function() {
         Route::get('/data/karyawan/{id}', 'detailKaryawan')->name('karyawan.detail');
         Route::delete('/data/karyawan/{id}', 'removeRecord')->name('karyawan.delete');
         Route::post('/uploads', 'importFile')->name('uploads');
+        Route::get('/edit/karyawan/{id}', 'formKaryawan')->name('formKaryawan');
+        Route::put('/edit/karyawan/{id}', 'editKaryawan')->name('formKaryawan.put');
     });
 });

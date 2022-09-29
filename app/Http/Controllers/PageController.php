@@ -53,4 +53,37 @@ class PageController extends Controller
         $res = Karyawan::find($id);
         return view('pages/detail_karyawan', compact('res'));
     }
+
+    public function formKaryawan($id) {
+        $res = Karyawan::find($id);
+        return view('pages/edit_karyawan', compact('res'));
+    }
+
+    public function editKaryawan(Request $request, $id) {
+        try {
+            $res = Karyawan::find($id);
+            $res->nid = $request->nid;
+            $res->nama = $request->nama;
+            $res->jenis_kelamin = $request->jenis_kelamin;
+            $res->tempat_lahir = $request->tempat_lahir;
+            $res->tanggal_lahir = $request->tanggal_lahir;
+            $res->pendidikan = $request->pendidikan;
+            $res->tipe_karyawan = $request->tipe_karyawan;
+            $res->jabatan = $request->jabatan;
+            $res->grade = $request->grade;
+            $res->bidang = $request->bidang;
+            $res->unit = $request->unit;
+            $res->tanggal_masuk = $request->tanggal_masuk;
+            $res->telp = $request->telp;
+            $res->alamat = $request->alamat;
+            $res->status = $request->status;
+            $res->update();
+
+            Session::flash('success', 'Data berhasil diperbaharui');
+            return redirect('/data/karyawan');
+        } catch (\Throwable $th) {
+            Session::flash('failed', 'Data gagal diperbaharui');
+            return redirect('/data/karyawan');
+        }
+    }
 }

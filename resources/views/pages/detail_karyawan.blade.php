@@ -10,7 +10,7 @@
         <div class="grid grid-cols-12 gap-6">
             <div class="col-span-12 mt-8">
                 <div class="intro-y flex items-center h-10">
-                    <h2 class="text-lg font-medium truncate mr-5">Data Karyawan</h2>
+                    <h2 class="text-lg font-medium truncate mr-5">Detail Karyawan</h2>
                 </div>
                 <div class="intro-y box px-5 pt-5 mt-5">
                     <div
@@ -26,6 +26,7 @@
                                 <div class="text-slate-500">{{$res->tempat_lahir}},
                                     {{$res->tanggal_lahir}}</div>
                                 <div class="text-slate-500">Gender: {{$res->jenis_kelamin}}</div>
+                                <div class="text-slate-500">Pendidikan: {{$res->pendidikan}}</div>
 
                             </div>
                         </div>
