@@ -52,7 +52,6 @@ async function removeItem() {
         <div class="grid grid-cols-12 gap-6">
             @extends('../layout/components/notif')
 
-            <!-- BEGIN: General Report -->
             <div class="col-span-12 mt-8">
                 <div class="intro-y flex items-center h-10">
                     <h2 class="text-lg font-medium truncate mr-5">Data Karyawan</h2>
@@ -92,10 +91,12 @@ async function removeItem() {
                                             <td>{{$item->bidang}}</td>
                                             <td>{{$item->unit}}</td>
                                             <td>
-                                                <button class="btn btn-dark mr-1 mb-2">
+                                                <a href="{{ route('karyawan.detail', $item->id) }}"
+                                                    class="btn btn-dark mr-1 mb-2">
                                                     <i data-lucide="eye" class="w-5 h-5"></i>
-                                                </button>
-                                                <button class="btn btn-warning mr-1 mb-2">
+                                                </a>
+                                                <button class="btn btn-warning mr-1 mb-2" data-tw-toggle="modal"
+                                                    data-tw-target="#add-data">
                                                     <i data-lucide="edit" class="w-5 h-5"></i>
                                                 </button>
                                                 <button class="btn btn-danger mr-1 mb-2" data-tw-toggle="modal"

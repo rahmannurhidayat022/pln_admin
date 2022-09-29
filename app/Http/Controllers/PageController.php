@@ -48,4 +48,9 @@ class PageController extends Controller
         Session::flash('success', 'Data berhasil dihapus');
         return redirect('/data/karyawan');
     }
+
+    public function detailKaryawan($id) {
+        $res = Karyawan::find($id);
+        return view('pages/detail_karyawan', compact('res'));
+    }
 }

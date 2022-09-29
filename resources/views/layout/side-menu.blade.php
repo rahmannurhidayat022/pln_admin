@@ -14,7 +14,8 @@
             <ul>
                 <!-- css untuk aktif nav = 'side-menu--active' -->
                 <li>
-                    <a href="/" class="side-menu side-menu--open">
+                    <a href="/"
+                        class="side-menu {{ Route::currentRouteName() === 'dashboard' ? 'side-menu--active' : '' }}">
                         <div class="side-menu__icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -29,7 +30,8 @@
                     </a>
                 </li>
                 <li>
-                    <a href="javascript:;" class="side-menu">
+                    <a href="javascript:;"
+                        class="side-menu {{ Route::currentRouteName() === 'karyawan' ? 'side-menu--active side-menu--open' : '' }}">
                         <div class="side-menu__icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -53,9 +55,11 @@
                             </div>
                         </div>
                     </a>
-                    <ul class="" style="display: none;">
+                    <ul class="{{ Route::currentRouteName() === 'karyawan' ? 'side-menu__sub-open' : (Route::currentRouteName() === 'karyawan.detail' ? 'side-menu__sub-open' : '') }}"
+                        style="display: {{ Route::currentRouteName() === 'karyawan' ? 'block' : (Route::currentRouteName() === 'karyawan.detail' ? 'block' : 'none') }};">
                         <li>
-                            <a href="{{url('data/karyawan')}}" class="side-menu">
+                            <a href="{{url('data/karyawan')}}"
+                                class="side-menu {{ Route::currentRouteName() === 'karyawan' ? 'side-menu--active' : (Route::currentRouteName() === 'karyawan.detail' ? 'side-menu--active' : '') }}">
                                 <div class="side-menu__icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
