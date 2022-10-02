@@ -73,10 +73,11 @@ async function removeItem() {
                                         <tr>
                                             <th class="whitespace-nowrap">NID</th>
                                             <th class="whitespace-nowrap">Nama</th>
+                                            <th class="whitespace-nowrap">Email</th>
+                                            <th class="whitespace-nowrap">No.Telp</th>
                                             <th class="whitespace-nowrap">Jabatan</th>
-                                            <th class="whitespace-nowrap">Grade</th>
                                             <th class="whitespace-nowrap">Bidang</th>
-                                            <th class="whitespace-nowrap">Unit</th>
+                                            <th class="whitespace-nowrap">Bagian</th>
                                             <th class="whitespace-nowrap"></th>
                                         </tr>
                                     </thead>
@@ -86,10 +87,11 @@ async function removeItem() {
                                         <tr>
                                             <td>{{$item->nid}}</td>
                                             <td>{{$item->nama}}</td>
+                                            <td>{{$item->email}}</td>
+                                            <td>{{$item->telp}}</td>
                                             <td>{{$item->jabatan}}</td>
-                                            <td>{{$item->grade}}</td>
                                             <td>{{$item->bidang}}</td>
-                                            <td>{{$item->unit}}</td>
+                                            <td>{{$item->bagian}}</td>
                                             <td>
                                                 <a href="{{ route('karyawan.detail', $item->id) }}"
                                                     class="btn btn-dark mr-1 mb-2">
