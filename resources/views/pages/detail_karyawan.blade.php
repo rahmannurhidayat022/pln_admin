@@ -69,9 +69,6 @@
                                     bagian: {{$res->bagian}}
                                 </div>
                                 <div class="truncate sm:whitespace-normal flex items-center">
-                                    Tanggal Masuk: {{$res->tanggal_masuk}}
-                                </div>
-                                <div class="truncate sm:whitespace-normal flex items-center">
                                     Bidang: {{$res->bidang}}
                                 </div>
                             </div>
