@@ -17,7 +17,7 @@
             </a>
             <div class="my-auto">
                 <img alt="Midone - HTML Admin Template" class="-intro-x w-1/2 -mt-16"
-                    src="{{ asset('build/assets/images/pjb.png') }}">
+                    src="{{ asset('build/assets/images/pjbs.png') }}">
                 <div class="-intro-x text-white font-medium text-4xl leading-tight mt-10">Sistem Informasi Kepegawaian<br />
                 SDM PJB UBJOM Tanjung Awar-Awar</div>
             </div>
