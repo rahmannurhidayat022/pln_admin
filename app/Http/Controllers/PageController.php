@@ -86,4 +86,44 @@ class PageController extends Controller
             return redirect('/data/karyawan');
         }
     }
+
+    public function getChartData() {
+        try {
+            $karyawanFilteredByPjb_L = Karyawan::where('tipe_karyawan', '=', 'PJB')->where('jenis_kelamin', '=', 'laki-laki')->count();
+            $karyawanFilteredByPjb_P = Karyawan::where('tipe_karyawan', '=', 'PJB')->where('jenis_kelamin', '=', 'perempuan')->count();
+            $karyawanFilteredByPjbs_L = Karyawan::where('tipe_karyawan', '=', 'PJBS')->where('jenis_kelamin', '=', 'laki-laki')->count();
+            $karyawanFilteredByPjbs_P = Karyawan::where('tipe_karyawan', '=', 'PJBS')->where('jenis_kelamin', '=', 'perempuan')->count();
+            $karyawanFilteredByTad_L = Karyawan::where('tipe_karyawan', '=', 'TAD')->where('jenis_kelamin', '=', 'laki-laki')->count();
+            $karyawanFilteredByTad_P = Karyawan::where('tipe_karyawan', '=', 'TAD')->where('jenis_kelamin', '=', 'perempuan')->count();
+
+            $sma = Karyawan::where('pendidikan', '=', 'SMA')->count();
+            $smk = Karyawan::where('pendidikan', '=', 'SMK')->count();
+            $ma = Karyawan::where('pendidikan', '=', 'MA')->count();
+            $d1 = Karyawan::where('pendidikan', '=', 'D1')->count();
+            $d2 = Karyawan::where('pendidikan', '=', 'D2')->count();
+            $d3 = Karyawan::where('pendidikan', '=', 'D3')->count();
+            $s1 = Karyawan::where('pendidikan', '=', 'S1')->count();
+            $s2 = Karyawan::where('pendidikan', '=', 'S2')->count();
+            $s3 = Karyawan::where('pendidikan', '=', 'S3')->count();
+
+
+            return response()->json([
+                    'pjb' => $karyawanFilteredByPjb,
+                    'pjbs' => $karyawanFilteredByPjbs,
+                    'tad' => $karyawanFilteredByTad,
+                    'sma' => $sma,
+                    'smk' => $smk,
+                    'ma' => $ma,
+                    'd1' => $d1,
+                    'd2' => $d2,
+                    'd3' => $d3,
+                    's1' => $s1,
+                    's2' => $s2,
+                    's3' => $s3,
+            ], 200);
+        } catch (\Throwable $th) {
+            return response()->json([ 'message' => 'Gagal memuat data chart' ], 400);
+        }
+        
+    }
 }

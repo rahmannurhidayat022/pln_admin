@@ -72,7 +72,12 @@
                             <div class="col-span-12 sm:col-span-12 xl:col-span-4">
                                 <label for="pendidikan" class="form-label">Pendidikan Terakhir</label>
                                 <select id="pendidikan" name="pendidikan" class="form-select mt-2 sm:mr-2">
-                                    <option value="SMA" {{ ($res->pendidikan) == 'SMA' ? 'selected' : ''}}>SMA</option>
+                                    <option value="SMA" {{ ($res->pendidikan) == 'SMA' ? 'selected' : ''}}>SMA
+                                    </option>
+                                    <option value="SMK" {{ ($res->pendidikan) == 'SMK' ? 'selected' : ''}}>SMK
+                                    </option>
+                                    <option value="MA" {{ ($res->pendidikan) == 'MA' ? 'selected' : ''}}>MA
+                                    </option>
                                     <option value="D1" {{ ($res->pendidikan) == 'D1' ? 'selected' : ''}}>Diploma I
                                     </option>
                                     <option value="D2" {{ ($res->pendidikan) == 'D2' ? 'selected' : ''}}>Diploma II

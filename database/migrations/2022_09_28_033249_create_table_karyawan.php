@@ -23,7 +23,7 @@ return new class extends Migration
             $table->bigInteger('telp')->nullable();
             $table->string('email')->nullable();
             $table->text('alamat')->nullable();
-            $table->string('pendidikan')->nullable();
+            $table->enum('pendidikan', ['SMA', 'SMK', 'MA', 'D1', 'D2', 'D3', 'S1', 'S2', 'S3'])->nullable();
             $table->string('tipe_karyawan')->nullable();
             $table->date('tanggal_masuk')->nullable();
             $table->string('jabatan')->nullable();

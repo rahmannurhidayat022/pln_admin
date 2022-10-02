@@ -1,13 +1,13 @@
 {
   "resources/js/app.js": {
-    "file": "assets/app.fe1eb69c.js",
+    "file": "assets/app.5d37764c.js",
     "src": "resources/js/app.js",
     "isEntry": true,
     "imports": [
       "__commonjsHelpers.d2428edb.js"
     ],
     "css": [
-      "assets/app.e16c4485.css"
+      "assets/app.5f5283bb.css"
     ]
   },
   "resources/js/ckeditor-classic.js": {
@@ -54,7 +54,7 @@
     "file": "assets/_commonjsHelpers.d2428edb.js"
   },
   "resources/css/app.css": {
-    "file": "assets/app.67d91de9.css",
+    "file": "assets/app.86f15764.css",
     "src": "resources/css/app.css",
     "isEntry": true
   }

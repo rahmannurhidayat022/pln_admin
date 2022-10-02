@@ -35,5 +35,6 @@ Route::middleware('auth')->group(function() {
         Route::post('/uploads', 'importFile')->name('uploads');
         Route::get('/edit/karyawan/{id}', 'formKaryawan')->name('formKaryawan');
         Route::put('/edit/karyawan/{id}', 'editKaryawan')->name('formKaryawan.put');
+        Route::get('/data/charts', 'getChartData')->name('getChartData');
     });
 });
