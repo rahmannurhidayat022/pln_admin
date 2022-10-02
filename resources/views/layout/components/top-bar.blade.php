@@ -4,7 +4,7 @@
     <div class="h-full flex items-center">
         <!-- BEGIN: Logo -->
         <a href="/" class="-intro-x hidden md:flex">
-            <img alt="Logo" class="w-24" src="{{ asset('build/assets/images/logo_pln.png') }}">
+            <img alt="Logo" class="w-24" src="{{ asset('build/assets/images/pjb.png') }}">
         </a>
         <!-- END: Logo -->
         <!-- BEGIN: Breadcrumb -->
