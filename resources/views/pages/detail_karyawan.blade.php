@@ -22,17 +22,20 @@
                             </div>
                             <div class="ml-5">
                                 <div class="w-24 sm:w-40 truncate sm:whitespace-normal font-medium text-lg">
-                                    {{$res->nama}} ({{$res->nid}})</div>
-                                <div class="text-slate-500">{{$res->tempat_lahir}},
-                                    {{$res->tanggal_lahir}}</div>
-                                <div class="text-slate-500">Gender: {{$res->jenis_kelamin}}</div>
+                                    {{$res->nama}}</div>
+                                <div class="text-slate-500">Tempat Tanggal Lahir: {{$res->tempat_lahir}},
+                                    {{\Carbon\Carbon::parse($res->tanggal_lahir)->format('d-m-Y')}}</div>
+                                <div class="text-slate-500">Agama: {{$res->agama}}</div>
+                                <div class="text-slate-500">Jenis Kelamin: {{$res->kelamin}}</div>
                                 <div class="text-slate-500">Pendidikan: {{$res->pendidikan}}</div>
+                                <div class="text-slate-500">Jurusan: {{$res->jurusan}}</div>
+                                <div class="text-slate-500">Alamat: {{$res->alamat}}</div>
 
                             </div>
                         </div>
                         <div
                             class="mt-6 lg:mt-0 flex-1 px-5 border-l border-r border-slate-200/60 dark:border-darkmode-400 border-t lg:border-t-0 pt-5 lg:pt-0">
-                            <div class="font-medium text-center lg:text-left lg:mt-3">Kontak</div>
+                            <div class="font-medium text-center lg:text-left lg:mt-3">Informasi</div>
                             <div class="flex flex-col justify-center items-center lg:items-start mt-4">
                                 <div class="truncate sm:whitespace-normal flex items-center">
                                     Email: {{$res->email}}
@@ -40,9 +43,13 @@
                                 <div class="truncate sm:whitespace-normal flex items-center">
                                     Telp: {{$res->telp}}
                                 </div>
-                                <div class="truncate sm:whitespace-normal flex items-center">
-                                    Alamat: {{$res->alamat}}
-                                </div>
+                                <div class="truncate sm:whitespace-normal flex items-center">NID: {{$res->nid}}</div>
+                                <div class="truncate sm:whitespace-normal flex items-center">NIK: {{$res->no_ktp}}</div>
+                                <div class="truncate sm:whitespace-normal flex items-center">NPWP: {{$res->npwp}}</div>
+                                <div class="truncate sm:whitespace-normal flex items-center">BPJS Kesehataan:
+                                    {{$res->bpjs_kesehatan}}</div>
+                                <div class="truncate sm:whitespace-normal flex items-center">BPJS Ketenagakerjaan:
+                                    {{$res->bpjs_ketenagakerjaan}}</div>
                             </div>
                         </div>
                         <div
@@ -50,25 +57,22 @@
                             <div class="font-medium text-center lg:text-left lg:mt-3">Pekerjaan</div>
                             <div class="flex flex-col justify-center items-center lg:items-start mt-4">
                                 <div class="truncate sm:whitespace-normal flex items-center">
-                                    Tipe Karyawan: {{$res->tipe_karyawan}}
+                                    Status Kepegawaian: {{$res->status_kepegawaian}}
                                 </div>
                                 <div class="truncate sm:whitespace-normal flex items-center">
                                     Jabatan: {{$res->jabatan}}
                                 </div>
                                 <div class="truncate sm:whitespace-normal flex items-center">
-                                    Tanggal Masuk: {{$res->tanggal_masuk}}
-                                </div>
-                                <div class="truncate sm:whitespace-normal flex items-center">
-                                    Grade: {{$res->grade}}
-                                </div>
-                                <div class="truncate sm:whitespace-normal flex items-center">
                                     Bidang: {{$res->bidang}}
                                 </div>
                                 <div class="truncate sm:whitespace-normal flex items-center">
-                                    Unit: {{$res->unit}}
+                                    bagian: {{$res->bagian}}
                                 </div>
                                 <div class="truncate sm:whitespace-normal flex items-center">
-                                    Status Karyawan: {{$res->status}}
+                                    Tanggal Masuk: {{$res->tanggal_masuk}}
+                                </div>
+                                <div class="truncate sm:whitespace-normal flex items-center">
+                                    Bidang: {{$res->bidang}}
                                 </div>
                             </div>
                         </div>

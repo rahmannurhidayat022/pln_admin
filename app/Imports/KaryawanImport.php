@@ -14,25 +14,32 @@ class KaryawanImport implements ToModel, WithHeadingRow, SkipsEmptyRows
     *
     * @return \Illuminate\Database\Eloquent\Model|null
     */
+
     public function model(array $row)
     {
+        // var_dump($row);
+        // \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject()
         return new Karyawan([
+            'nama' => $row['nama_karyawan'],
             'nid' => $row['nid'],
-            'nama' => $row['nama'],
-            'jenis_kelamin' => $row['jenis_kelamin'],
+            'status_kepegawaian' => $row['status_kepegawaian'],
+            'jabatan' => $row['jabatan'],
+            'bidang' => $row['bidang'],
+            'bagian' => $row['bagian'],
+            'pendidikan' => $row['pendidikan'],
+            'jurusan' => $row['jurusan'],
             'tempat_lahir' => $row['tempat_lahir'],
-            'tanggal_lahir' => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['tanggal_lahir']),
+            'tanggal_lahir' => \Carbon\Carbon::parse($row['tanggal_lahir'])->format('Y-m-d H:i:s'),
             'telp' => $row['telp'],
             'email' => $row['email'],
             'alamat' => $row['alamat'],
-            'pendidikan' => $row['pendidikan'],
-            'tipe_karyawan' => $row['tipe_karyawan'],
-            'tanggal_masuk' => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['tanggal_masuk']),
-            'jabatan' => $row['jabatan'],
-            'grade' => $row['grade'],
-            'bidang' => $row['bidang'],
-            'unit' => $row['unit'],
-            'status' => $row['status']
+            'kelamin' => $row['kelamin'],
+            'agama' => $row['agama'],
+            'usia' => $row['usia'],
+            'no_ktp' => $row['nomor_ktp'],
+            'npwp' => $row['nomor_npwp'],
+            'bpjs_kesehatan' => $row['nomor_bpjs_kesehatan'],
+            'bpjs_ketenagakerjaan' => $row['nomor_bpjs_ketenagakerjaan'],
         ]);
     }
 }
