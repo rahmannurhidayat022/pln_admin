@@ -24,7 +24,6 @@ import Chart from 'chart.js/auto';
   }
 
   const data = await getData();
-  console.log(data);
 
   if ($('#chart-jumlah-karyawan').length) {
     let ctx = $('#chart-jumlah-karyawan')[0].getContext('2d');
@@ -146,6 +145,105 @@ import Chart from 'chart.js/auto';
             ],
             backgroundColor: 'rgba(255, 159, 64, 0.2)',
             borderColor: 'rgb(255, 159, 64)',
+            borderWidth: 1,
+          },
+        ],
+      },
+      options: {
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            labels: {
+              color: colors.slate['500'](0.8),
+            },
+            title: {
+              display: true,
+              text: 'Jenis Kelamin',
+              position: 'center',
+              font: {
+                size: 16,
+                weight: 'bold',
+              },
+            },
+          },
+        },
+        scales: {
+          x: {
+            ticks: {
+              font: {
+                size: 12,
+              },
+              color: colors.slate['500'](0.8),
+            },
+            grid: {
+              display: false,
+              drawBorder: false,
+            },
+          },
+          y: {
+            ticks: {
+              font: {
+                size: '12',
+              },
+              color: colors.slate['500'](0.8),
+            },
+            grid: {
+              color: $('html').hasClass('dark')
+                ? colors.slate['500'](0.3)
+                : colors.slate['300'](),
+              borderDash: [2, 2],
+              drawBorder: false,
+            },
+          },
+        },
+      },
+    });
+  }
+
+  if ($('#chart-data-usia').length) {
+    let ctx = $('#chart-data-usia')[0].getContext('2d');
+    let myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['<20', '20-29', '30-39', '40-49', '>50'],
+        datasets: [
+          {
+            label: 'PT PJB',
+            data: [
+              data.data.usia.pjb.level1,
+              data.data.usia.pjb.level2,
+              data.data.usia.pjb.level3,
+              data.data.usia.pjb.level4,
+              data.data.usia.pjb.level5,
+            ],
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            borderColor: 'rgb(255, 99, 132)',
+            borderWidth: 1,
+          },
+          {
+            label: 'PT PJBS',
+            data: [
+              data.data.usia.pjbs.level1,
+              data.data.usia.pjbs.level2,
+              data.data.usia.pjbs.level3,
+              data.data.usia.pjbs.level4,
+              data.data.usia.pjbs.level5,
+            ],
+            backgroundColor: 'rgba(255, 159, 64, 0.2)',
+            borderColor: 'rgb(255, 159, 64)',
+            borderWidth: 1,
+          },
+          {
+            label: 'PT TAD',
+            data: [
+              data.data.usia.tad.level1,
+              data.data.usia.tad.level2,
+              data.data.usia.tad.level3,
+              data.data.usia.tad.level4,
+              data.data.usia.tad.level5,
+            ],
+            backgroundColor: 'rgba(255, 205, 86, 0.2)',
+            borderColor: 'rgb(255, 205, 86)',
             borderWidth: 1,
           },
         ],

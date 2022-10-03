@@ -116,11 +116,12 @@
                             @endif
                             @if(Request::query('category') == 'karyawan')
                             <div class="col-span-12 sm:col-span-12 xl:col-span-2">
-                                <label for="status_kontrak" class="form-label">Status Kontrak</label>
-                                <select id="status_kontrak" name="status_kontrak" class="form-select mt-2 sm:mr-2">
-                                    <option value="PJB" {{ ($res->status_kontrak == 'pjb') ? 'selected' : ''}}>PJB
+                                <label for="status_kepegawaian" class="form-label">Status Kontrak</label>
+                                <select id="status_kepegawaian" name="status_kepegawaian"
+                                    class="form-select mt-2 sm:mr-2">
+                                    <option value="PJB" {{ ($res->status_kepegawaian == 'pjb') ? 'selected' : ''}}>PJB
                                     </option>
-                                    <option value="PJBS" {{ ($res->status_kontrak == 'pjbs') ? 'selected' : ''}}>
+                                    <option value="PJBS" {{ ($res->status_kepegawaian == 'pjbs') ? 'selected' : ''}}>
                                         PJBS
                                     </option>
                                 </select>

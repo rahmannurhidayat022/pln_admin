@@ -121,6 +121,7 @@ class PageController extends Controller
                 $res->bagian = $request->bagian;
                 $res->bidang = $request->bidang;
                 $res->jurusan = $request->jurusan;
+                $res->usia = $request->usia;
                 $res->telp = $request->telp;
                 $res->email = $request->email;
                 $res->alamat = $request->alamat;
@@ -199,6 +200,24 @@ class PageController extends Controller
             $t_s1 = TAD::where('pendidikan', '=', 'S1')->count();
             $t_s2 = TAD::where('pendidikan', '=', 'S2')->count();
 
+            $pjb_level1 = Karyawan::where('status_kepegawaian', '=', 'pjb')->where('usia', '<', '20')->count();
+            $pjb_level2 = Karyawan::where('status_kepegawaian', '=', 'pjb')->whereBetween('usia', [20, 29])->count();
+            $pjb_level3 = Karyawan::where('status_kepegawaian', '=', 'pjb')->whereBetween('usia', [30, 39])->count();
+            $pjb_level4 = Karyawan::where('status_kepegawaian', '=', 'pjb')->whereBetween('usia', [40, 49])->count();
+            $pjb_level5 = Karyawan::where('status_kepegawaian', '=', 'pjb')->where('usia', '>=', '50')->count();
+
+            $pjbs_level1 = Karyawan::where('status_kepegawaian', '=', 'pjbs')->where('usia', '<', '20')->count();
+            $pjbs_level2 = Karyawan::where('status_kepegawaian', '=', 'pjbs')->whereBetween('usia', [20, 29])->count();
+            $pjbs_level3 = Karyawan::where('status_kepegawaian', '=', 'pjbs')->whereBetween('usia', [30, 39])->count();
+            $pjbs_level4 = Karyawan::where('status_kepegawaian', '=', 'pjbs')->whereBetween('usia', [40, 49])->count();
+            $pjbs_level5 = Karyawan::where('status_kepegawaian', '=', 'pjbs')->where('usia', '>=', '50')->count();
+
+            $tad_level1 = TAD::where('usia', '<', '20')->count();
+            $tad_level2 = TAD::whereBetween('usia', [20, 29])->count();
+            $tad_level3 = TAD::whereBetween('usia', [30, 39])->count();
+            $tad_level4 = TAD::whereBetween('usia', [40, 49])->count();
+            $tad_level5 = TAD::where('usia', '>=', '50')->count();
+
             $data = [
                 'status' => '200',
                 'data' => [
@@ -221,6 +240,29 @@ class PageController extends Controller
                         'D3' => $k_d3 + $t_d3,
                         'S1' => $k_s1 + $t_s1,
                         'S2' => $k_s2 + $t_s2,
+                    ],
+                    'usia' => [
+                        'pjb' => [
+                            'level1' => $pjb_level1,
+                            'level2' => $pjb_level2,
+                            'level3' => $pjb_level3,
+                            'level4' => $pjb_level4,
+                            'level5' => $pjb_level5,
+                        ],
+                        'pjbs' => [
+                            'level1' => $pjbs_level1,
+                            'level2' => $pjbs_level2,
+                            'level3' => $pjbs_level3,
+                            'level4' => $pjbs_level4,
+                            'level5' => $pjbs_level5,
+                        ],
+                        'tad' => [
+                            'level1' => $tad_level1,
+                            'level2' => $tad_level2,
+                            'level3' => $tad_level3,
+                            'level4' => $tad_level4,
+                            'level5' => $tad_level5,
+                        ],
                     ],
                 ],
             ];
