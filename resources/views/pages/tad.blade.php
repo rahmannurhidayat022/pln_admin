@@ -64,6 +64,10 @@ async function removeItem() {
                             data-tw-target="#upload_file">
                             <i data-lucide="file-text" class="w-5 h-5 mr-1"></i> Import Excel
                         </button>
+                        <!-- EXPORT TAD -->
+                        <a href="{{ route('export.tad') }}" class="btn btn-outline-primary mr-1 mb-2">
+                            <i data-lucide="file-text" class="w-5 h-5 mr-1"></i> Export Excel
+                        </a>
                     </div>
                     <div class="p-5" id="striped-rows-table">
                         <div class="preview" style="display: block;">

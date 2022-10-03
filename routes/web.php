@@ -40,5 +40,7 @@ Route::middleware('auth')->group(function() {
         Route::post('/uploads/tad', 'importFileTAD')->name('tad.uploads');
         //export excel karyawan
         Route::get('/export/karyawan', 'exportKaryawan')->name('export.karyawan');
+        //export excel tad
+        Route::get('/export/tad', 'exportTAD')->name('export.tad');
     });
 });

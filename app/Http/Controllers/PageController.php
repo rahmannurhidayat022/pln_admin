@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Imports\KaryawanImport;
 use App\Exports\KaryawanExport;
 use App\Imports\TADImport;
+use App\Exports\TADExport;
 use App\Models\Karyawan;
 use App\Models\TAD;
 use Illuminate\Support\Facades\Session;
@@ -23,7 +24,11 @@ class PageController extends Controller
     {
         return Excel::download(new KaryawanExport, 'karyawan.xlsx');
     }
-    
+    // export excel tad
+    public function exportTAD()
+    {
+        return Excel::download(new TADExport, 'tad.xlsx');
+    }
     public function karyawan_view()
     {
         $datas = Karyawan::latest()->paginate(7);
