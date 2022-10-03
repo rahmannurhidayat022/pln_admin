@@ -178,38 +178,53 @@ class PageController extends Controller
 
     public function getChartData() {
         try {
-            $karyawanFilteredByPjb_L = Karyawan::where('tipe_karyawan', '=', 'PJB')->where('jenis_kelamin', '=', 'laki-laki')->count();
-            $karyawanFilteredByPjb_P = Karyawan::where('tipe_karyawan', '=', 'PJB')->where('jenis_kelamin', '=', 'perempuan')->count();
-            $karyawanFilteredByPjbs_L = Karyawan::where('tipe_karyawan', '=', 'PJBS')->where('jenis_kelamin', '=', 'laki-laki')->count();
-            $karyawanFilteredByPjbs_P = Karyawan::where('tipe_karyawan', '=', 'PJBS')->where('jenis_kelamin', '=', 'perempuan')->count();
-            $karyawanFilteredByTad_L = Karyawan::where('tipe_karyawan', '=', 'TAD')->where('jenis_kelamin', '=', 'laki-laki')->count();
-            $karyawanFilteredByTad_P = Karyawan::where('tipe_karyawan', '=', 'TAD')->where('jenis_kelamin', '=', 'perempuan')->count();
+            $karyawanFilteredByPjb_L = Karyawan::where('status_kepegawaian', '=', 'pjb')->where('kelamin', '=', 'laki-laki')->count();
+            $karyawanFilteredByPjb_P = Karyawan::where('status_kepegawaian', '=', 'pjb')->where('kelamin', '=', 'perempuan')->count();
+            $karyawanFilteredByPjbs_L = Karyawan::where('status_kepegawaian', '=', 'pjbs')->where('kelamin', '=', 'laki-laki')->count();
+            $karyawanFilteredByPjbs_P = Karyawan::where('status_kepegawaian', '=', 'pjbs')->where('kelamin', '=', 'perempuan')->count();
+            $karyawanFilteredByTad_L = TAD::where('kelamin', '=', 'laki-laki')->count();
+            $karyawanFilteredByTad_P = TAD::where('kelamin', '=', 'perempuan')->count();
 
-            $sma = Karyawan::where('pendidikan', '=', 'SMA')->count();
-            $smk = Karyawan::where('pendidikan', '=', 'SMK')->count();
-            $ma = Karyawan::where('pendidikan', '=', 'MA')->count();
-            $d1 = Karyawan::where('pendidikan', '=', 'D1')->count();
-            $d2 = Karyawan::where('pendidikan', '=', 'D2')->count();
-            $d3 = Karyawan::where('pendidikan', '=', 'D3')->count();
-            $s1 = Karyawan::where('pendidikan', '=', 'S1')->count();
-            $s2 = Karyawan::where('pendidikan', '=', 'S2')->count();
-            $s3 = Karyawan::where('pendidikan', '=', 'S3')->count();
+            $k_sma = Karyawan::where('pendidikan', '=', 'SMA')->count();
+            $k_smk = Karyawan::where('pendidikan', '=', 'SMK')->count();
+            $k_ma = Karyawan::where('pendidikan', '=', 'MA')->count();
+            $k_d3 = Karyawan::where('pendidikan', '=', 'D3')->count();
+            $k_s1 = Karyawan::where('pendidikan', '=', 'S1')->count();
+            $k_s2 = Karyawan::where('pendidikan', '=', 'S2')->count();
 
+            $t_sma = TAD::where('pendidikan', '=', 'SMA')->count();
+            $t_smk = TAD::where('pendidikan', '=', 'SMK')->count();
+            $t_ma = TAD::where('pendidikan', '=', 'MA')->count();
+            $t_d3 = TAD::where('pendidikan', '=', 'D3')->count();
+            $t_s1 = TAD::where('pendidikan', '=', 'S1')->count();
+            $t_s2 = TAD::where('pendidikan', '=', 'S2')->count();
 
-            return response()->json([
-                    'pjb' => $karyawanFilteredByPjb,
-                    'pjbs' => $karyawanFilteredByPjbs,
-                    'tad' => $karyawanFilteredByTad,
-                    'sma' => $sma,
-                    'smk' => $smk,
-                    'ma' => $ma,
-                    'd1' => $d1,
-                    'd2' => $d2,
-                    'd3' => $d3,
-                    's1' => $s1,
-                    's2' => $s2,
-                    's3' => $s3,
-            ], 200);
+            $data = [
+                'status' => '200',
+                'data' => [
+                    'jumlah_karyawan' => [
+                        'pjb' => [
+                            'laki_laki' => $karyawanFilteredByPjb_L,
+                            'perempuan' => $karyawanFilteredByPjb_P,
+                        ],
+                        'pjbs' => [
+                            'laki_laki' => $karyawanFilteredByPjbs_L,
+                            'perempuan' => $karyawanFilteredByPjbs_P,
+                        ],
+                        'tad' => [
+                            'laki_laki' => $karyawanFilteredByTad_L,
+                            'perempuan' => $karyawanFilteredByTad_P,
+                        ],
+                    ],
+                    'pendidikan' => [
+                        'SMU' => $k_sma + $k_smk + $k_ma + $t_sma + $t_smk + $t_ma,
+                        'D3' => $k_d3 + $t_d3,
+                        'S1' => $k_s1 + $t_s1,
+                        'S2' => $k_s2 + $t_s2,
+                    ],
+                ],
+            ];
+            return response()->json($data, 200);
         } catch (\Throwable $th) {
             return response()->json([ 'message' => 'Gagal memuat data chart' ], 400);
         }
