@@ -257,7 +257,7 @@ import Chart from 'chart.js/auto';
             },
             title: {
               display: true,
-              text: 'Jenis Kelamin',
+              text: 'Usia',
               position: 'center',
               font: {
                 size: 16,
