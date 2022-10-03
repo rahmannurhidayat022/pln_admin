@@ -55,11 +55,10 @@
                             </div>
                         </div>
                     </a>
-                    <ul class="{{ Route::currentRouteName() === 'karyawan' ? 'side-menu__sub-open' : (Route::currentRouteName() === 'karyawan.detail' ? 'side-menu__sub-open' : '') }}"
-                        style="display: {{ Route::currentRouteName() === 'karyawan' ? 'block' : (Route::currentRouteName() === 'karyawan.detail' ? 'block' : 'none') }};">
+                    <ul class="{{ Route::currentRouteName() === 'karyawan' ? 'side-menu__sub-open' : (Route::currentRouteName() === 'tad' ? 'side-menu__sub-open' : (Route::currentRouteName() === 'karyawan.detail' ? 'side-menu__sub-open' : '')) }}"
+                        style="display: {{ Route::currentRouteName() === 'karyawan' ? 'block' : (Route::currentRouteName() === 'tad' ? 'block' : (Route::currentRouteName() === 'karyawan.detail' ? 'block' : 'none')) }};">
                         <li>
-                            <a href="{{url('data/karyawan')}}"
-                                class="side-menu {{ Route::currentRouteName() === 'karyawan' ? 'side-menu--active' : (Route::currentRouteName() === 'karyawan.detail' ? 'side-menu--active' : '') }}">
+                            <a href="{{url('data/karyawan')}}" class="side-menu">
                                 <div class="side-menu__icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -72,8 +71,7 @@
                                     Karyawan
                                 </div>
                             </a>
-                            <a href="{{url('data/tad')}}"
-                                class="side-menu {{ Route::currentRouteName() === 'tad' ? 'side-menu--active' : (Route::currentRouteName() === 'tad.detail' ? 'side-menu--active' : '') }}">
+                            <a href="{{url('data/tad')}}" class="side-menu">
                                 <div class="side-menu__icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"

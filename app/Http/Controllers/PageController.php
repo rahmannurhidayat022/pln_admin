@@ -51,9 +51,18 @@ class PageController extends Controller
         return redirect('/data/karyawan');
     }
 
-    public function detailKaryawan($id) {
-        $res = Karyawan::find($id);
-        return view('pages/detail_karyawan', compact('res'));
+    public function detailKaryawan(Request $request, $id) {
+        $category = $request->query('category');
+        if ($category == 'karyawan') {
+            $res = Karyawan::find($id);
+            return view('pages/detail_karyawan', compact('res'));
+        }
+        if ($category == 'tad') {
+            $res = TAD::find($id);
+            return view('pages/detail_karyawan', compact('res'));
+        }
+
+        return redirect()->back();
     }
 
     public function formKaryawan($id) {

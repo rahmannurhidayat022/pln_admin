@@ -37,6 +37,7 @@
                             class="mt-6 lg:mt-0 flex-1 px-5 border-l border-r border-slate-200/60 dark:border-darkmode-400 border-t lg:border-t-0 pt-5 lg:pt-0">
                             <div class="font-medium text-center lg:text-left lg:mt-3">Informasi</div>
                             <div class="flex flex-col justify-center items-center lg:items-start mt-4">
+                                @if(Request::query('category') == 'karyawan')
                                 <div class="truncate sm:whitespace-normal flex items-center">
                                     Email: {{$res->email}}
                                 </div>
@@ -44,6 +45,7 @@
                                     Telp: {{$res->telp}}
                                 </div>
                                 <div class="truncate sm:whitespace-normal flex items-center">NID: {{$res->nid}}</div>
+                                @endif
                                 <div class="truncate sm:whitespace-normal flex items-center">NIK: {{$res->no_ktp}}</div>
                                 <div class="truncate sm:whitespace-normal flex items-center">NPWP: {{$res->npwp}}</div>
                                 <div class="truncate sm:whitespace-normal flex items-center">BPJS Kesehataan:
@@ -56,6 +58,26 @@
                             class="mt-6 lg:mt-0 flex-1 px-5 border-l border-r border-slate-200/60 dark:border-darkmode-400 border-t lg:border-t-0 pt-5 lg:pt-0">
                             <div class="font-medium text-center lg:text-left lg:mt-3">Pekerjaan</div>
                             <div class="flex flex-col justify-center items-center lg:items-start mt-4">
+                                @if(Request::query('category') == 'tad')
+                                <div class="truncate sm:whitespace-normal flex items-center">
+                                    Status Kontrak: {{$res->status_kontrak}}
+                                </div>
+                                <div class="truncate sm:whitespace-normal flex items-center">
+                                    Mulai Masuk MKP: {{\Carbon\Carbon::parse($res->mkp)->format('d-m-Y')}}
+                                </div>
+                                <div class="truncate sm:whitespace-normal flex items-center">
+                                    Masa Kerja: {{\Carbon\Carbon::parse($res->masa_kerja)->format('d-m-Y')}}
+                                </div>
+                                <div class="truncate sm:whitespace-normal flex items-center">
+                                    Jabatan: {{$res->jabatan}}
+                                </div>
+                                <div class="truncate sm:whitespace-normal flex items-center">
+                                    Bidang: {{$res->bidang}}
+                                </div>
+                                <div class="truncate sm:whitespace-normal flex items-center">
+                                    Posisi: {{$res->posisi}}
+                                </div>
+                                @else
                                 <div class="truncate sm:whitespace-normal flex items-center">
                                     Status Kepegawaian: {{$res->status_kepegawaian}}
                                 </div>
@@ -66,11 +88,9 @@
                                     Bidang: {{$res->bidang}}
                                 </div>
                                 <div class="truncate sm:whitespace-normal flex items-center">
-                                    bagian: {{$res->bagian}}
+                                    Bagian: {{$res->bagian}}
                                 </div>
-                                <div class="truncate sm:whitespace-normal flex items-center">
-                                    Bidang: {{$res->bidang}}
-                                </div>
+                                @endif
                             </div>
                         </div>
                     </div>

@@ -93,7 +93,7 @@ async function removeItem() {
                                             <td>{{$item->bidang}}</td>
                                             <td>{{$item->bagian}}</td>
                                             <td>
-                                                <a href="{{ route('karyawan.detail', $item->id) }}"
+                                                <a href="{{ url('/data/karyawan/'.$item->id).'?category=karyawan' }}"
                                                     class="btn btn-dark mr-1 mb-2">
                                                     <i data-lucide="eye" class="w-5 h-5"></i>
                                                 </a>
