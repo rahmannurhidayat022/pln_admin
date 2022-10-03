@@ -54,7 +54,7 @@ async function removeItem() {
 
             <div class="col-span-12 mt-8">
                 <div class="intro-y flex items-center h-10">
-                    <h2 class="text-lg font-medium truncate mr-5">Data Karyawan</h2>
+                    <h2 class="text-lg font-medium truncate mr-5">Data Karyawan TAD</h2>
                 </div>
                 <div class="intro-y box mt-5">
                     <div class="flex flex-col sm:flex-row items-center p-5 border-b border-slate-200/60">
