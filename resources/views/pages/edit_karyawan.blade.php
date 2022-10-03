@@ -13,16 +13,20 @@
                     <h2 class="text-lg font-medium truncate mr-5">Edit Data Karyawan</h2>
                 </div>
                 <div class="intro-y box px-5 pt-5 mt-5">
-                    <form class="py-10" action="{{ route('formKaryawan.put', $res->id) }}" method="POST">
+                    <form class="py-10"
+                        action="{{ url('/edit/karyawan/'.$res->id.'?category='.Request::query('category')) }}"
+                        method="POST">
                         @csrf
                         @method('PUT')
                         <div class="grid grid-cols-12 gap-4">
+                            @if(Request::query('category') == 'karyawan')
                             <div class="col-span-12 sm:col-span-12 xl:col-span-2">
                                 <div class="mt-3">
                                     <label for="nid" class="form-label">NID</label>
                                     <input value="{{ $res->nid }}" type="text" name="nid" id="nid" class="form-control">
                                 </div>
                             </div>
+                            @endif
                             <div class="col-span-12 sm:col-span-12 xl:col-span-3">
                                 <div class="mt-3">
                                     <label for="nama" class="form-label">Nama Lengkap</label>
@@ -103,17 +107,25 @@
                                         id="tanggal_lahir" class="form-control">
                                 </div>
                             </div>
+                            @if(Request::query('category') == 'tad')
                             <div class="col-span-12 sm:col-span-12 xl:col-span-2">
                                 <label for="status_kepegawaian" class="form-label">Status Kepegawaian</label>
-                                <select id="status_kepegawaian" name="status_kepegawaian"
-                                    class="form-select mt-2 sm:mr-2">
-                                    <option value="PJB" {{ ($res->status_kepegawaian == 'pjb') ? 'selected' : ''}}>PJB
+                                <input value="{{ $res->status_kontrak }}" type="text" name="status_kontrak"
+                                    id="status_kontrak" class="form-control">
+                            </div>
+                            @endif
+                            @if(Request::query('category') == 'karyawan')
+                            <div class="col-span-12 sm:col-span-12 xl:col-span-2">
+                                <label for="status_kontrak" class="form-label">Status Kontrak</label>
+                                <select id="status_kontrak" name="status_kontrak" class="form-select mt-2 sm:mr-2">
+                                    <option value="PJB" {{ ($res->status_kontrak == 'pjb') ? 'selected' : ''}}>PJB
                                     </option>
-                                    <option value="PJBS" {{ ($res->status_kepegawaian == 'pjbs') ? 'selected' : ''}}>
+                                    <option value="PJBS" {{ ($res->status_kontrak == 'pjbs') ? 'selected' : ''}}>
                                         PJBS
                                     </option>
                                 </select>
                             </div>
+                            @endif
                             <div class="col-span-12 sm:col-span-12 xl:col-span-2">
                                 <label for="pendidikan" class="form-label">Pendidikan Terakhir</label>
                                 <select id="pendidikan" name="pendidikan" class="form-select mt-2 sm:mr-2">
@@ -142,24 +154,47 @@
                                         class="form-control">
                                 </div>
                             </div>
-                            <div class="col-span-12 sm:col-span-12 xl:col-span-4">
+                            <div class="col-span-12 sm:col-span-12 xl:col-span-2">
                                 <div class="mt-3">
                                     <label for="jabatan" class="form-label">Jabatan</label>
                                     <input value="{{$res->jabatan}}" type="text" name="jabatan" id="jabatan"
                                         class="form-control">
                                 </div>
                             </div>
-                            <div class="col-span-12 sm:col-span-12 xl:col-span-4">
-                                <div class="mt-3">
-                                    <label for="bagian" class="form-label">Bagian</label>
-                                    <input value="{{$res->bagian}}" type="text" name="bagian" id="bagian"
-                                        class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-span-12 sm:col-span-12 xl:col-span-4">
+                            <div class="col-span-12 sm:col-span-12 xl:col-span-2">
                                 <div class="mt-3">
                                     <label for="bidang" class="form-label">Bidang</label>
                                     <input value="{{$res->bidang}}" type="text" name="bidang" id="bidang"
+                                        class="form-control">
+                                </div>
+                            </div>
+                            @if(Request::query('category') == 'tad')
+                            <div class="col-span-12 sm:col-span-12 xl:col-span-2">
+                                <div class="mt-3">
+                                    <label for="mkp" class="form-label">Mulai Masuk MKP</label>
+                                    <input value="{{$res->mkp}}" type="date" name="mkp" id="mkp" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-span-12 sm:col-span-12 xl:col-span-2">
+                                <div class="mt-3">
+                                    <label for="masa_kerja" class="form-label">Masa Kerja</label>
+                                    <input value="{{$res->masa_kerja}}" type="date" name="masa_kerja" id="masa_kerja"
+                                        class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-span-12 sm:col-span-12 xl:col-span-2">
+                                <div class="mt-3">
+                                    <label for="posisi" class="form-label">Posisi</label>
+                                    <input value="{{$res->posisi}}" type="text" name="posisi" id="posisi"
+                                        class="form-control">
+                                </div>
+                            </div>
+                            @endif
+                            @if(Request::query('category') == 'karyawan')
+                            <div class="col-span-12 sm:col-span-12 xl:col-span-2">
+                                <div class="mt-3">
+                                    <label for="bagian" class="form-label">Bagian</label>
+                                    <input value="{{$res->bagian}}" type="text" name="bagian" id="bagian"
                                         class="form-control">
                                 </div>
                             </div>
@@ -177,6 +212,7 @@
                                         class="form-control">
                                 </div>
                             </div>
+                            @endif
                             <div class="col-span-12 sm:col-span-12 xl:col-span-4">
                                 <div class="mt-3">
                                     <label for="alamat" class="form-label">Alamat</label>
@@ -186,7 +222,6 @@
                             </div>
                             <div class="col-span-12 mt-3">
                                 <button type="submit" class="btn btn-primary mr-1">Submit</button>
-                                <button type="reset" class="btn btn-secondary">Reset</button>
                             </div>
                         </div>
                     </form>

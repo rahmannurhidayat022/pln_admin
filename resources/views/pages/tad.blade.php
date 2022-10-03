@@ -97,7 +97,7 @@ async function removeItem() {
                                                     class="btn btn-dark mr-1 mb-2">
                                                     <i data-lucide="eye" class="w-5 h-5"></i>
                                                 </a>
-                                                <a href="{{ route('formKaryawan', $item->id) }}"
+                                                <a href="{{ url('/edit/karyawan/'.$item->id).'?category=tad' }}"
                                                     class="btn btn-warning mr-1 mb-2">
                                                     <i data-lucide="edit" class="w-5 h-5"></i>
                                                 </a>

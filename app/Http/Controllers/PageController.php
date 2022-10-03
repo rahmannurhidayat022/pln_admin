@@ -65,40 +65,89 @@ class PageController extends Controller
         return redirect()->back();
     }
 
-    public function formKaryawan($id) {
-        $res = Karyawan::find($id);
-        return view('pages/edit_karyawan', compact('res'));
+    public function formKaryawan(Request $request, $id) {
+        $category = $request->query('category');
+        if ($category == 'karyawan') {
+            $res = Karyawan::find($id);
+            return view('pages/edit_karyawan', compact('res'));
+        }
+
+        if ($category == 'tad') {
+            $res = TAD::find($id);
+            return view('pages/edit_karyawan', compact('res'));
+        }
+
+        return redirect()->back();
     }
 
     public function editKaryawan(Request $request, $id) {
+        $category = $request->query('category');
         try {
-            $res = Karyawan::find($id);
-            $res->nid = $request->nid;
-            $res->nama = $request->nama;
-            $res->kelamin = $request->kelamin;
-            $res->tempat_lahir = $request->tempat_lahir;
-            $res->tanggal_lahir = $request->tanggal_lahir;
-            $res->pendidikan = $request->pendidikan;
-            $res->status_kepegawaian = $request->status_kepegawaian;
-            $res->jabatan = $request->jabatan;
-            $res->bagian = $request->bagian;
-            $res->bidang = $request->bidang;
-            $res->jurusan = $request->jurusan;
-            $res->telp = $request->telp;
-            $res->email = $request->email;
-            $res->alamat = $request->alamat;
-            $res->agama = $request->agama;
-            $res->no_ktp = $request->no_ktp;
-            $res->npwp = $request->npwp;
-            $res->bpjs_kesehatan = $request->bpjs_kesehatan;
-            $res->bpjs_ketenagakerjaan = $request->bpjs_ketenagakerjaan;
-            $res->update();
+            if ($category == 'karyawan') {
+                $res = Karyawan::find($id);
+                $res->nid = $request->nid;
+                $res->nama = $request->nama;
+                $res->kelamin = $request->kelamin;
+                $res->tempat_lahir = $request->tempat_lahir;
+                $res->tanggal_lahir = $request->tanggal_lahir;
+                $res->pendidikan = $request->pendidikan;
+                $res->status_kepegawaian = $request->status_kepegawaian;
+                $res->jabatan = $request->jabatan;
+                $res->bagian = $request->bagian;
+                $res->bidang = $request->bidang;
+                $res->jurusan = $request->jurusan;
+                $res->telp = $request->telp;
+                $res->email = $request->email;
+                $res->alamat = $request->alamat;
+                $res->agama = $request->agama;
+                $res->no_ktp = $request->no_ktp;
+                $res->npwp = $request->npwp;
+                $res->bpjs_kesehatan = $request->bpjs_kesehatan;
+                $res->bpjs_ketenagakerjaan = $request->bpjs_ketenagakerjaan;
+                $res->update();
 
-            Session::flash('success', 'Data berhasil diperbaharui');
-            return redirect('/data/karyawan');
+                Session::flash('success', 'Data berhasil diperbaharui');
+                return redirect('/data/karyawan');
+            }
+
+            if ($category == 'tad') {
+                $res = TAD::find($id);
+                $res->nama = $request->nama;
+                $res->kelamin = $request->kelamin;
+                $res->tempat_lahir = $request->tempat_lahir;
+                $res->tanggal_lahir = $request->tanggal_lahir;
+                $res->pendidikan = $request->pendidikan;
+                $res->status_kontrak = $request->status_kontrak;
+                $res->jabatan = $request->jabatan;
+                $res->posisi = $request->posisi;
+                $res->bidang = $request->bidang;
+                $res->jurusan = $request->jurusan;
+                $res->usia = $request->usia;
+                $res->alamat = $request->alamat;
+                $res->agama = $request->agama;
+                $res->mkp = $request->mkp;
+                $res->masa_kerja = $request->masa_kerja;
+                $res->no_ktp = $request->no_ktp;
+                $res->npwp = $request->npwp;
+                $res->bpjs_kesehatan = $request->bpjs_kesehatan;
+                $res->bpjs_ketenagakerjaan = $request->bpjs_ketenagakerjaan;
+                $res->update();
+
+                Session::flash('success', 'Data berhasil diperbaharui');
+                return redirect('/data/tad');
+            }
+
+            return;
         } catch (\Throwable $th) {
-            Session::flash('failed', 'Data gagal diperbaharui');
-            return redirect('/data/karyawan');
+            if ($category == 'karyawan') {
+                Session::flash('failed', 'Data gagal diperbaharui');
+                return redirect('/data/karyawan');
+            }
+
+            if ($category == 'tad') {
+                Session::flash('failed', 'Data gagal diperbaharui');
+                return redirect('/data/tad');
+            }
         }
     }
 
