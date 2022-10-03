@@ -38,5 +38,7 @@ Route::middleware('auth')->group(function() {
         Route::get('/data/charts', 'getChartData')->name('getChartData');
         Route::get('/data/tad', 'tad')->name('tad');
         Route::post('/uploads/tad', 'importFileTAD')->name('tad.uploads');
+        //export excel karyawan
+        Route::get('/export/karyawan', 'exportKaryawan')->name('export.karyawan');
     });
 });

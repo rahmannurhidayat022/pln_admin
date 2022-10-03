@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Imports\KaryawanImport;
+use App\Exports\KaryawanExport;
 use App\Imports\TADImport;
 use App\Models\Karyawan;
 use App\Models\TAD;
@@ -17,7 +18,12 @@ class PageController extends Controller
     {
         return view('pages/dashboard');
     }
-
+    // export excel karyawan
+    public function exportKaryawan()
+    {
+        return Excel::download(new KaryawanExport, 'karyawan.xlsx');
+    }
+    
     public function karyawan_view()
     {
         $datas = Karyawan::latest()->paginate(7);
