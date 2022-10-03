@@ -19,6 +19,13 @@
     <div class="col-span-12 lg:col-span-6">
         <div class="intro-y box p-1 md:p-2 lg:p-5">
             <div class="h-[400px]">
+                <canvas id="chart-jumlah-karyawan-bygender"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-span-12 lg:col-span-6">
+        <div class="intro-y box p-1 md:p-2 lg:p-5">
+            <div class="h-[400px]">
                 <canvas id="chart-data-pendidikan"></canvas>
             </div>
         </div>

@@ -1,4 +1,3 @@
-import helper from './helper';
 import colors from './colors';
 import Chart from 'chart.js/auto';
 
@@ -25,6 +24,7 @@ import Chart from 'chart.js/auto';
   }
 
   const data = await getData();
+  console.log(data);
 
   if ($('#chart-jumlah-karyawan').length) {
     let ctx = $('#chart-jumlah-karyawan')[0].getContext('2d');
@@ -35,9 +35,24 @@ import Chart from 'chart.js/auto';
           {
             label: 'Data',
             data: [
-              { x: 'PT PJB', y: data.pjb },
-              { x: 'PT PJBS', y: data.pjbs },
-              { x: 'PT TAD', y: data.tad },
+              {
+                x: 'PT PJB',
+                y:
+                  data.data.jumlah_karyawan.pjb.laki_laki +
+                  data.data.jumlah_karyawan.pjb.perempuan,
+              },
+              {
+                x: 'PT PJBS',
+                y:
+                  data.data.jumlah_karyawan.pjbs.laki_laki +
+                  data.data.jumlah_karyawan.pjbs.perempuan,
+              },
+              {
+                x: 'PT TAD',
+                y:
+                  data.data.jumlah_karyawan.tad.laki_laki +
+                  data.data.jumlah_karyawan.tad.perempuan,
+              },
             ],
             backgroundColor: [
               'rgba(255, 99, 132, 0.2)',
@@ -62,7 +77,89 @@ import Chart from 'chart.js/auto';
             },
             title: {
               display: true,
-              text: 'Tipe Karyawan',
+              text: 'Karyawan',
+              position: 'center',
+              font: {
+                size: 16,
+                weight: 'bold',
+              },
+            },
+          },
+        },
+        scales: {
+          x: {
+            ticks: {
+              font: {
+                size: 12,
+              },
+              color: colors.slate['500'](0.8),
+            },
+            grid: {
+              display: false,
+              drawBorder: false,
+            },
+          },
+          y: {
+            ticks: {
+              font: {
+                size: '12',
+              },
+              color: colors.slate['500'](0.8),
+            },
+            grid: {
+              color: $('html').hasClass('dark')
+                ? colors.slate['500'](0.3)
+                : colors.slate['300'](),
+              borderDash: [2, 2],
+              drawBorder: false,
+            },
+          },
+        },
+      },
+    });
+  }
+
+  if ($('#chart-jumlah-karyawan-bygender').length) {
+    let ctx = $('#chart-jumlah-karyawan-bygender')[0].getContext('2d');
+    let myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['PT PJB', 'PT PJBS', 'PT TAD'],
+        datasets: [
+          {
+            label: 'Laki-laki',
+            data: [
+              data.data.jumlah_karyawan.pjb.laki_laki,
+              data.data.jumlah_karyawan.pjbs.laki_laki,
+              data.data.jumlah_karyawan.tad.laki_laki,
+            ],
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            borderColor: 'rgb(255, 99, 132)',
+            borderWidth: 1,
+          },
+          {
+            label: 'Perempuan',
+            data: [
+              data.data.jumlah_karyawan.pjb.perempuan,
+              data.data.jumlah_karyawan.pjbs.perempuan,
+              data.data.jumlah_karyawan.tad.perempuan,
+            ],
+            backgroundColor: 'rgba(255, 159, 64, 0.2)',
+            borderColor: 'rgb(255, 159, 64)',
+            borderWidth: 1,
+          },
+        ],
+      },
+      options: {
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            labels: {
+              color: colors.slate['500'](0.8),
+            },
+            title: {
+              display: true,
+              text: 'Jenis Kelamin',
               position: 'center',
               font: {
                 size: 16,
@@ -109,35 +206,26 @@ import Chart from 'chart.js/auto';
     let myPieChart = new Chart(ctx, {
       type: 'pie',
       data: {
-        labels: ['SMA/SMK/MA', 'D1', 'D2', 'D3', 'S1', 'S2', 'S3'],
+        labels: ['SMA/SMK/MA', 'D3', 'S1', 'S2'],
         datasets: [
           {
             data: [
-              data.sma + data.smk + data.ma,
-              data.d1,
-              data.d2,
-              data.d3,
-              data.s1,
-              data.s2,
-              data.s3,
+              data.data.pendidikan.SMU,
+              data.data.pendidikan.D3,
+              data.data.pendidikan.S1,
+              data.data.pendidikan.S2,
             ],
             backgroundColor: [
               'rgba(255, 99, 132, 0.2)',
               'rgba(255, 159, 64, 0.2)',
               'rgba(255, 205, 86, 0.2)',
               'rgba(75, 192, 192, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(153, 102, 255, 0.2)',
-              'rgba(201, 203, 207, 0.2)',
             ],
             hoverBackgroundColor: [
               'rgb(255, 99, 132)',
               'rgb(255, 159, 64)',
               'rgb(255, 205, 86)',
               'rgb(75, 192, 192)',
-              'rgb(54, 162, 235)',
-              'rgb(153, 102, 255)',
-              'rgb(201, 203, 207)',
             ],
             borderWidth: 5,
             borderColor: $('html').hasClass('dark')
@@ -155,7 +243,7 @@ import Chart from 'chart.js/auto';
             },
             title: {
               display: true,
-              text: 'Pendidikan Karyawan',
+              text: 'Pendidikan',
               position: 'center',
               font: {
                 size: 16,

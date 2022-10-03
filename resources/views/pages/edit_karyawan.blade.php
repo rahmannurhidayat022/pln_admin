@@ -135,10 +135,6 @@
                                     </option>
                                     <option value="MA" {{ ($res->pendidikan) == 'MA' ? 'selected' : ''}}>MA
                                     </option>
-                                    <option value="D1" {{ ($res->pendidikan) == 'D1' ? 'selected' : ''}}>Diploma I
-                                    </option>
-                                    <option value="D2" {{ ($res->pendidikan) == 'D2' ? 'selected' : ''}}>Diploma II
-                                    </option>
                                     <option value="D3" {{ ($res->pendidikan) == 'D3' ? 'selected' : ''}}>Diploma III
                                     </option>
                                     <option value="S1" {{ ($res->pendidikan) == 'S1' ? 'selected' : ''}}>Strata I
