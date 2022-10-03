@@ -40,15 +40,29 @@ class PageController extends Controller
         }
     }
 
-    public function removeRecord($id)
+    public function removeRecord(Request $request, $id)
     {
-        $res = Karyawan::find($id)->delete();
-        if (!$res) {
-            Session::flash('failed', 'Data gagal dihapus');
+        $category = $request->query('category');
+        if ($category == 'karyawan') {
+            $res = Karyawan::find($id)->delete();
+            if (!$res) {
+                Session::flash('failed', 'Data gagal dihapus');
+                return redirect('/data/karyawan');
+            }
+            Session::flash('success', 'Data berhasil dihapus');
             return redirect('/data/karyawan');
         }
-        Session::flash('success', 'Data berhasil dihapus');
-        return redirect('/data/karyawan');
+        if ($category == 'tad') {
+            $res = TAD::find($id)->delete();
+            if (!$res) {
+                Session::flash('failed', 'Data gagal dihapus');
+                return redirect('/data/tad');
+            }
+            Session::flash('success', 'Data berhasil dihapus');
+            return redirect('/data/tad');
+        }
+
+        return redirect()->back();
     }
 
     public function detailKaryawan(Request $request, $id) {
