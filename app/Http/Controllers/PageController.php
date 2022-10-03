@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Imports\KaryawanImport;
+use App\Imports\TADImport;
 use App\Models\Karyawan;
+use App\Models\TAD;
 use Illuminate\Support\Facades\Session;
 use Excel;
 
@@ -128,6 +130,26 @@ class PageController extends Controller
         } catch (\Throwable $th) {
             return response()->json([ 'message' => 'Gagal memuat data chart' ], 400);
         }
-        
+    }
+
+    public function tad() {
+        $tad = TAD::latest()->paginate(7);
+        return view('pages/tad', compact('tad'));
+    }
+
+    public function importFileTAD(Request $request)
+    {
+        if ($request->file('file')) {
+            $import = Excel::import(new TADImport, $request->file('file'));
+            if ($import) {
+                Session::flash('success', 'Data berhasil ditambahkan');
+                return redirect('/data/tad');
+            } else {
+                Session::flash('failed', 'Data berhasil ditambahkan');
+                return redirect('/data/tad');
+            } 
+        } else {
+            return redirect('/data/karyawan')->with('info', 'Pilih file');
+        }
     }
 }

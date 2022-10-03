@@ -36,5 +36,7 @@ Route::middleware('auth')->group(function() {
         Route::get('/edit/karyawan/{id}', 'formKaryawan')->name('formKaryawan');
         Route::put('/edit/karyawan/{id}', 'editKaryawan')->name('formKaryawan.put');
         Route::get('/data/charts', 'getChartData')->name('getChartData');
+        Route::get('/data/tad', 'tad')->name('tad');
+        Route::post('/uploads/tad', 'importFileTAD')->name('tad.uploads');
     });
 });

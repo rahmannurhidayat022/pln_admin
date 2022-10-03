@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class TAD extends Model
 {
     use HasFactory;
+    protected $table = 'tad';
     protected $fillable = [
         'nama',
         'jabatan',
