@@ -19,7 +19,7 @@
         <div class="intro-x dropdown w-8 h-8">
             <div class="dropdown-toggle w-8 h-8 rounded-full overflow-hidden shadow-lg image-fit zoom-in scale-110"
                 role="button" aria-expanded="false" data-tw-toggle="dropdown">
-                <img alt="Profile" src="{{ asset('build/assets/images/' . $fakers[9]['photos'][0]) }}">
+                <img alt="Profile" src="https://img.icons8.com/external-others-inmotus-design/541/000000/external-Avatar-round-icons-others-inmotus-design-5.png">
             </div>
             <div class="dropdown-menu w-56">
                 <ul

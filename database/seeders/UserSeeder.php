@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
         // Default credentials
         \App\Models\User::insert([
             [ 
-                'name' => 'Left4code',
+                'name' => 'Admin',
                 'email' => 'admin@pln.com',
                 'email_verified_at' => now(),
                 'password' => Hash::make('admin123'),
@@ -28,8 +28,5 @@ class UserSeeder extends Seeder
                 'remember_token' => Str::random(10)
             ]
         ]);
-
-        // Fake users
-        User::factory()->times(9)->create();
     }
 }
