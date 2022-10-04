@@ -109,14 +109,14 @@
                             </div>
                             @if(Request::query('category') == 'tad')
                             <div class="col-span-12 sm:col-span-12 xl:col-span-2">
-                                <label for="status_kepegawaian" class="form-label">Status Kepegawaian</label>
+                                <label for="status_kepegawaian" class="form-label">Status Kontrak</label>
                                 <input value="{{ $res->status_kontrak }}" type="text" name="status_kontrak"
                                     id="status_kontrak" class="form-control">
                             </div>
                             @endif
                             @if(Request::query('category') == 'karyawan')
                             <div class="col-span-12 sm:col-span-12 xl:col-span-2">
-                                <label for="status_kepegawaian" class="form-label">Status Kontrak</label>
+                                <label for="status_kepegawaian" class="form-label">Status Kepegawaian</label>
                                 <select id="status_kepegawaian" name="status_kepegawaian"
                                     class="form-select mt-2 sm:mr-2">
                                     <option value="PJB" {{ ($res->status_kepegawaian == 'pjb') ? 'selected' : ''}}>PJB
