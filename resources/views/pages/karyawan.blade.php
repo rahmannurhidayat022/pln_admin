@@ -78,7 +78,7 @@ async function removeItem() {
                                             <th class="whitespace-nowrap">NID</th>
                                             <th class="whitespace-nowrap">Nama</th>
                                             <th class="whitespace-nowrap">Email</th>
-                                            <th class="whitespace-nowrap">No.Telp</th>
+                                            <th class="whitespace-nowrap">Status</th>
                                             <th class="whitespace-nowrap">Jabatan</th>
                                             <th class="whitespace-nowrap">Bidang</th>
                                             <th class="whitespace-nowrap">Bagian</th>
@@ -92,7 +92,7 @@ async function removeItem() {
                                             <td>{{$item->nid}}</td>
                                             <td>{{$item->nama}}</td>
                                             <td>{{$item->email}}</td>
-                                            <td>{{$item->telp}}</td>
+                                            <td>{{$item->status_kepegawaian}}</td>
                                             <td>{{$item->jabatan}}</td>
                                             <td>{{$item->bidang}}</td>
                                             <td>{{$item->bagian}}</td>
