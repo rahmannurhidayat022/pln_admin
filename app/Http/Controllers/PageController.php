@@ -29,8 +29,16 @@ class PageController extends Controller
     {
         return Excel::download(new TADExport, 'tad.xlsx');
     }
-    public function karyawan_view()
+    public function karyawan_view(Request $request)
     {
+        $search = $request->query('search');
+        if($search) {
+            $datas = Karyawan::where('nama', 'like', '%' . $search . '%')
+            ->orWhere('nid', 'like', '%' . $search . '%')
+            ->paginate(7);
+            return view('pages/karyawan', [ 'karyawans' => $datas ]);
+        }
+
         $datas = Karyawan::latest()->paginate(7);
         return view('pages/karyawan', [ 'karyawans' => $datas ]);
     }

@@ -68,8 +68,26 @@ async function removeItem() {
                         <a href="{{ route('export.karyawan') }}" class="btn btn-outline-primary mr-1 mb-2">
                             <i data-lucide="file-text" class="w-5 h-5 mr-1"></i> Export Excel
                         </a>
+                        <!-- button refresh -->
+                        <a href="{{ route('karyawan') }}" class="btn btn-outline-primary mr-1 mb-2">
+                            <i data-lucide="file-text" class="w-5 h-5 mr-1"></i> Refresh
+                        </a>
+                        <!-- search karyawan data -->
+                                                <!-- search -->
+                            <form action="{{ route('karyawan') }}" method="GET">
+                            <div class="grid grid-cols-12 gap-6">
+                                <div class="col-span-12 sm:col-span-6">
+                                    <input type="text" name="search" id="search" class="form-control" placeholder="Masukkan nama/nid karyawan">
+                                    <div class="col-span-12 sm:col-span-6">
+                                </div>
+                                <div class="col-span-12 sm:col-span-6">
+                                    <button type="submit" class="btn btn-primary mr-1 mb-2">Search</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                    <div class="p-5" id="striped-rows-table">
+                    
                         <div class="preview" style="display: block;">
                             <div class="overflow-x-auto">
                                 <table class="table table-striped">

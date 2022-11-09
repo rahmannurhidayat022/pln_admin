@@ -42,5 +42,7 @@ Route::middleware('auth')->group(function() {
         Route::get('/export/karyawan', 'exportKaryawan')->name('export.karyawan');
         //export excel tad
         Route::get('/export/tad', 'exportTAD')->name('export.tad');
+        //search karyawab by nama
+        Route::get('/search/karyawan', 'searchKaryawan')->name('search.karyawan');
     });
 });
