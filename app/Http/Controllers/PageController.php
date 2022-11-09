@@ -280,9 +280,18 @@ class PageController extends Controller
         }
     }
 
-    public function tad() {
-        $tad = TAD::latest()->paginate(7);
-        return view('pages/tad', compact('tad'));
+    public function tad(Request $request)
+    {
+        $search = $request->query('search');
+        if($search) {
+            $datas = TAD::where('nama', 'like', '%' . $search . '%')
+            //->orWhere('nid', 'like', '%' . $search . '%')
+            ->paginate(7);
+            return view('pages/tad', [ 'tad' => $datas ]);
+        }
+
+        $datas = TAD::latest()->paginate(7);
+        return view('pages/tad', [ 'tad' => $datas ]);
     }
 
     public function importFileTAD(Request $request)

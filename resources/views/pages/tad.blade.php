@@ -68,6 +68,15 @@ async function removeItem() {
                         <a href="{{ route('export.tad') }}" class="btn btn-outline-primary mr-1 mb-2">
                             <i data-lucide="book-open" class="w-5 h-5 mr-1"></i> Export Excel
                         </a>
+                        <!-- search karyawan data -->
+                        <form action="{{ route('tad') }}" method="GET">
+                             <input type="text" name="search" placeholder="masukan nama" required/>
+                            <button type="submit" class="btn btn-primary mr-1 mb-2">Search</button>
+                        </form>
+                        <!-- button reload data -->
+                        <a href="{{ route('tad') }}" class="btn btn-outline-primary mr-1 mb-2">
+                            <i data-lucide="refresh-ccw" class="w-5 h-5 mr-1"></i>
+                        </a>
                     </div>
                     <div class="p-5" id="striped-rows-table">
                         <div class="preview" style="display: block;">
