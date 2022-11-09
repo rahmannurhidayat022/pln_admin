@@ -34,6 +34,8 @@ return new class extends Migration
             $table->date('mkp')->nullable();
             $table->date('masa_kerja')->nullable();
             $table->string('status_kontrak')->nullable();
+            //pt enum Mitra Karya, Mitra Karya Pratama, Mitra Karya Utama, Mitra Karya Utama Pratama
+            $table->enum('pt', ['Mitra Karya Prima', 'Brion Bara Indonesia', 'Kaka Sasmita Wijaya', 'Gunung Mas Jaya Tuban', 'Sentinel Cakra Buana', 'Tanjung Utama Sakti', 'Swabina Gatra'])->nullable();
             $table->timestamps();
         });
     }

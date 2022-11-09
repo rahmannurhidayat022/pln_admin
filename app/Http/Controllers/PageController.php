@@ -138,6 +138,7 @@ class PageController extends Controller
                 $res->npwp = $request->npwp;
                 $res->bpjs_kesehatan = $request->bpjs_kesehatan;
                 $res->bpjs_ketenagakerjaan = $request->bpjs_ketenagakerjaan;
+                $res->pt= $request->pt;
                 $res->update();
 
                 Session::flash('success', 'Data berhasil diperbaharui');
@@ -165,6 +166,7 @@ class PageController extends Controller
                 $res->npwp = $request->npwp;
                 $res->bpjs_kesehatan = $request->bpjs_kesehatan;
                 $res->bpjs_ketenagakerjaan = $request->bpjs_ketenagakerjaan;
+                $res->pt= $request->pt;
                 $res->update();
 
                 Session::flash('success', 'Data berhasil diperbaharui');

@@ -60,6 +60,9 @@
                             <div class="flex flex-col justify-center items-center lg:items-start mt-4">
                                 @if(Request::query('category') == 'tad')
                                 <div class="truncate sm:whitespace-normal flex items-center">
+                                    PT: {{$res->pt}}
+                                </div>
+                                <div class="truncate sm:whitespace-normal flex items-center">
                                     Status Kontrak: {{$res->status_kontrak}}
                                 </div>
                                 <div class="truncate sm:whitespace-normal flex items-center">
