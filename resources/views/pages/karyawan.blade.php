@@ -70,7 +70,7 @@ async function removeItem() {
                         </a>
                         <!-- search karyawan data -->
                         <form action="{{ route('karyawan') }}" method="GET">
-                             <input type="text" name="search" placeholder="masukan name/nid" required/>
+                             <input type="text" name="search" placeholder="masukan nama/nid" required/>
                             <button type="submit" class="btn btn-primary mr-1 mb-2">Search</button>
                         </form>
                         <!-- button reload data -->
