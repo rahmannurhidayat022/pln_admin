@@ -14,7 +14,7 @@ class TADExport implements FromCollection, WithHeadings, ShouldAutoSize
     */
     public function collection()
     {
-        return TAD::select('nama','no_ktp', 'npwp', 'bpjs_kesehatan', 'bpjs_ketenagakerjaan', 'kelamin','agama','tempat_lahir', 'tanggal_lahir', 'usia', 'alamat', 'mkp', 'masa_kerja', 'status_kontrak', 'pendidikan', 'jurusan', 'jabatan', 'bidang', 'posisi','pt')->get();
+        return TAD::select('nama','no_ktp', 'npwp', 'bpjs_kesehatan', 'bpjs_ketenagakerjaan', 'kelamin','agama','tempat_lahir', 'tanggal_lahir', 'usia', 'alamat', 'mkp', 'masa_kerja', 'status_kontrak', 'pendidikan', 'jurusan', 'jabatan', 'bidang', 'posisi')->get();
     }
 
     public function headings(): array
@@ -39,7 +39,6 @@ class TADExport implements FromCollection, WithHeadings, ShouldAutoSize
             'JABATAN',
             'BIDANG',
             'POSISI',
-            'PT',
         ];
     }
 }

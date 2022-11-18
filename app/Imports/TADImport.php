@@ -36,7 +36,6 @@ class TADImport implements ToModel, WithHeadingRow, SkipsEmptyRows
             'jabatan' => $row['jabatan'],
             'bidang' => $row['bidang'],
             'posisi' => $row['posisi'],
-            'pt'=> $row['pt'],
         ]);
     }
 }

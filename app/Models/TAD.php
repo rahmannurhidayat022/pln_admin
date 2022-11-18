@@ -29,6 +29,5 @@ class TAD extends Model
         'mkp',
         'masa_kerja',
         'status_kontrak',
-        'pt',
     ];
 }
