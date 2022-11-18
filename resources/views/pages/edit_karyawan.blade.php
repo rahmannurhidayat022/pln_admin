@@ -186,26 +186,6 @@
                                         class="form-control">
                                 </div>
                             </div>
-                            <div class="col-span-12 sm:col-span-12 xl:col-span-2">
-                                <label for="pt" class="form-label">PT</label>
-                                <select id="pt" name="pt"
-                                    class="form-select mt-2 sm:mr-2">
-                                    <option value="Mitra Karya Prima" {{ ($res->pt == 'Mitra Karya Prima') ? 'selected' : ''}}>Mitra Karya Prima
-                                    </option>
-                                    <option value="Brion Bara Indonesia" {{ ($res->pt == 'Brion Bara Indonesia') ? 'selected' : ''}}>Brion Bara Indonesia
-                                    </option>
-                                    <option value="Kaka Sasmita Wijaya" {{ ($res->pt == 'Kaka Sasmita Wijaya') ? 'selected' : ''}}>Kaka Sasmita Wijaya
-                                    </option>
-                                    <option value="Gunung Mas Jaya Tuban" {{ ($res->pt == 'Gunung Mas Jaya Tuban') ? 'selected' : ''}}>Gunung Mas Jaya Tuban
-                                    </option>
-                                    <option value="Sentinel Cakra Buana" {{ ($res->pt == 'Sentinel Cakra Buana') ? 'selected' : ''}}>Sentinel Cakra Buana
-                                    </option>
-                                    <option value="Tanjung Utama Sakti" {{ ($res->pt == 'Tanjung Utama Sakti') ? 'selected' : ''}}>Tanjung Utama Sakti
-                                    </option>
-                                    <option value="Swabina Gatra" {{ ($res->pt == 'Swabina Gatra') ? 'selected' : ''}}>Swabina Gatra
-                                    </option>
-                                </select>
-                            </div>
                             @endif
                             @if(Request::query('category') == 'karyawan')
                             <div class="col-span-12 sm:col-span-12 xl:col-span-2">
@@ -230,6 +210,26 @@
                                 </div>
                             </div>
                             @endif
+                            <div class="col-span-12 sm:col-span-12 xl:col-span-2">
+                                <label for="pt" class="form-label">PT</label>
+                                <select id="pt" name="pt"
+                                    class="form-select mt-2 sm:mr-2">
+                                    <option value="Mitra Karya Prima" {{ ($res->pt == 'Mitra Karya Prima') ? 'selected' : ''}}>Mitra Karya Prima
+                                    </option>
+                                    <option value="Brion Bara Indonesia" {{ ($res->pt == 'Brion Bara Indonesia') ? 'selected' : ''}}>Brion Bara Indonesia
+                                    </option>
+                                    <option value="Kaka Sasmita Wijaya" {{ ($res->pt == 'Kaka Sasmita Wijaya') ? 'selected' : ''}}>Kaka Sasmita Wijaya
+                                    </option>
+                                    <option value="Gunung Mas Jaya Tuban" {{ ($res->pt == 'Gunung Mas Jaya Tuban') ? 'selected' : ''}}>Gunung Mas Jaya Tuban
+                                    </option>
+                                    <option value="Sentinel Cakra Buana" {{ ($res->pt == 'Sentinel Cakra Buana') ? 'selected' : ''}}>Sentinel Cakra Buana
+                                    </option>
+                                    <option value="Tanjung Utama Sakti" {{ ($res->pt == 'Tanjung Utama Sakti') ? 'selected' : ''}}>Tanjung Utama Sakti
+                                    </option>
+                                    <option value="Swabina Gatra" {{ ($res->pt == 'Swabina Gatra') ? 'selected' : ''}}>Swabina Gatra
+                                    </option>
+                                </select>
+                            </div>
                             <div class="col-span-12 sm:col-span-12 xl:col-span-4">
                                 <div class="mt-3">
                                     <label for="alamat" class="form-label">Alamat</label>
