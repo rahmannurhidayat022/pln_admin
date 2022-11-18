@@ -287,7 +287,7 @@ class PageController extends Controller
         $search = $request->query('search');
         if($search) {
             $datas = TAD::where('nama', 'like', '%' . $search . '%')
-            ->orWhere('pt', 'like', '%' . $search . '%')
+            //->orWhere('nid', 'like', '%' . $search . '%')
             ->paginate(7);
             return view('pages/tad', [ 'tad' => $datas ]);
         }
