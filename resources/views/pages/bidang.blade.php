@@ -5,6 +5,48 @@
 @endsection
 
 @section('subcontent')
+<script>
+let itemId;
+const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+function getId(id) {
+    itemId = id;
+    return;
+}
+
+function getHostUrl() {
+    const protocol = location.protocol;
+    const slashes = protocol.concat("//");
+    const host = slashes.concat(window.location.hostname);
+    const port = location.port;
+    return host + ':' + port;
+}
+
+async function removeItem() {
+    try {
+        const uri = getHostUrl() + '/data/karyawan/' + itemId + '?category=tad';
+        const response = await fetch(uri, {
+            method: 'DELETE',
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'POST,GET,OPTIONS, PUT, DELETE',
+                'Access-Control-Allow-Headers': 'Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization',
+                'X-CSRF-TOKEN': token,
+            },
+            body: {
+                _token: token,
+                id: itemId,
+                _method: 'DELETE',
+            },
+        });
+        window.location.reload();
+        return;
+    } catch (error) {
+        console.error(error.message);
+    }
+}
+</script>
+
 <div class="grid grid-cols-12 gap-6">
     <div class="col-span-12 2xl:col-span-12">
         <div class="grid grid-cols-12 gap-6">
@@ -38,14 +80,6 @@
                                             <td>{{$item->kode_bidang}}</td>
                                             <td>{{$item->nama_bidang}}</td>
                                             <td>
-                                                <a href="{{ url('/data/karyawan/'.$item->id).'?category=tad' }}"
-                                                    class="btn btn-dark mr-1 mb-2">
-                                                    <i data-lucide="eye" class="w-5 h-5"></i>
-                                                </a>
-                                                <a href="{{ url('/edit/karyawan/'.$item->id).'?category=tad' }}"
-                                                    class="btn btn-warning mr-1 mb-2">
-                                                    <i data-lucide="edit" class="w-5 h-5"></i>
-                                                </a>
                                                 <button class="btn btn-danger mr-1 mb-2" data-tw-toggle="modal"
                                                     data-tw-target="#delete" onclick="getId({{$item->id}})">
                                                     <i data-lucide="trash" class="w-5 h-5"></i>
@@ -79,16 +113,17 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-body p-10 text-center">
-                <form class="w-full overflow-x-hidden" action="" method="POST">
+                <form class="w-full overflow-x-hidden" action="{{ route('bidang.store') }}" method="POST">
                     @csrf
                     <div class="mb-2 flex flex-col items-start gap-2">
-                        <label class="font-medium text-[16px]" id="kode">Kode Bidang:</label>
-                        <input class="w-full rounded" type="text" id="kode" placeholder="BD01" required />
+                        <label class="font-medium text-[16px]" id="kode_bidang">Kode Bidang:</label>
+                        <input class="w-full rounded" type="text" name="kode_bidang" id="kode_bidang" placeholder="BD01"
+                            required />
                     </div>
                     <div class="mb-2 flex flex-col items-start gap-2">
                         <label class="font-medium text-[16px]" id="nama_bidang">Nama Bidang:</label>
-                        <input class="w-full rounded" type="text" id="nama_bidang" placeholder="Administrasi"
-                            required />
+                        <input class="w-full rounded" type="text" name="nama_bidang" id="nama_bidang"
+                            placeholder="Administrasi" required />
                     </div>
                     <div class="mt-3">
                         <button type="submit" class="btn btn-primary btn-lg w-full">Submit</button>

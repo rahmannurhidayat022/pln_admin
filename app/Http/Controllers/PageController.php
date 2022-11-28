@@ -303,7 +303,7 @@ class PageController extends Controller
                 Session::flash('success', 'Data berhasil ditambahkan');
                 return redirect('/data/tad');
             } else {
-                Session::flash('failed', 'Data berhasil ditambahkan');
+                Session::flash('failed', 'Data gagal ditambahkan');
                 return redirect('/data/tad');
             } 
         } else {
@@ -315,5 +315,26 @@ class PageController extends Controller
         $data = $bidang->orderBy('kode_bidang', 'asc')->get();
 
         return view('pages.bidang', [ 'data' => $data ]);
+    }
+
+    public function createbidang(Request $request, Bidang $bidang) {
+        $request->validate([
+            'kode_bidang' => 'required',
+            'nama_bidang' => 'required',
+        ]);
+
+        $filtered = $bidang->where('kode_bidang', '=', $request->input('kode_bidang'))->get();
+        
+        if (count($filtered) > 0) {
+            Session::flash('failed', 'Nilai Kode Bidang sudah dipakai');
+            return redirect('/data/bidang'); 
+        }
+                
+
+        $data = $request->all();
+        $bidang->create($data);
+
+        Session::flash('success', 'Data berhasil ditambahkan');
+        return redirect('/data/bidang');
     }
 }
