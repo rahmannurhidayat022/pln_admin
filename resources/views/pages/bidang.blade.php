@@ -24,7 +24,7 @@ function getHostUrl() {
 
 async function removeItem() {
     try {
-        const uri = getHostUrl() + '/data/karyawan/' + itemId + '?category=tad';
+        const uri = getHostUrl() + '/data/bidang/' + itemId;
         const response = await fetch(uri, {
             method: 'DELETE',
             headers: {

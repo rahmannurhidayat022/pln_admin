@@ -330,11 +330,20 @@ class PageController extends Controller
             return redirect('/data/bidang'); 
         }
                 
-
         $data = $request->all();
         $bidang->create($data);
 
         Session::flash('success', 'Data berhasil ditambahkan');
+        return redirect('/data/bidang');
+    }
+
+    public function deletebidang(Bidang $bidang, $id) {
+        $res = $bidang->find($id)->delete();
+        if (!$res) {
+            Session::flash('failed', 'Data tidak ditemukan');
+            return redirect('/data/bidang'); 
+        }
+        Session::flash('success', 'Data berhasil dihapus');
         return redirect('/data/bidang');
     }
 }

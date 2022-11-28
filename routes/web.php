@@ -45,5 +45,6 @@ Route::middleware('auth')->group(function() {
 
         Route::get('/data/bidang', 'bidangpage')->name('bidang');
         Route::post('/data/bidang', 'createbidang')->name('bidang.store');
+        Route::delete('/data/bidang/{id}', 'deletebidang')->name('bidang.destroy');
     });
 });
