@@ -52,5 +52,6 @@ Route::middleware('auth')->group(function() {
         Route::delete('/data/jabatan/{id}', 'deletejabatan')->name('jabatan.destroy');
 
         Route::get('/form-karyawan', 'formkaryawanpage')->name('formkaryawan');
+        Route::post('/form-karyawan', 'karyawanstore')->name('formkaryawan.store');
     });
 });

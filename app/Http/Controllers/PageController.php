@@ -395,4 +395,80 @@ class PageController extends Controller
         
         return redirect('/');
     }
+
+    public function karyawanstore (Request $request, Karyawan $karyawan, TAD $tad) {
+        if($request->query('category') && $request->query('category') == "karyawan" || $request->query('category') == "tad") {
+            $category = $request->query('category');
+            try {
+                if ($category == 'karyawan') {
+                    $karyawan->create([
+                        "nid" => $request->nid,
+                        "nama" => $request->nama,
+                        "kelamin" => $request->kelamin,
+                        "tempat_lahir" => $request->tempat_lahir,
+                        "tanggal_lahir" => $request->tanggal_lahir,
+                        "pendidikan" => $request->pendidikan,
+                        "status_kepegawaian" => $request->status_kepegawaian,
+                        "jabatan" => $request->jabatan,
+                        "bagian" => $request->bagian,
+                        "bidang" => $request->bidang,
+                        "jurusan" => $request->jurusan,
+                        "usia" => $request->usia,
+                        "telp" => $request->telp,
+                        "email" => $request->email,
+                        "alamat" => $request->alamat,
+                        "agama" => $request->agama,
+                        "no_ktp" => $request->no_ktp,
+                        "npwp" => $request->npwp,
+                        "bpjs_kesehatan" => $request->bpjs_kesehatan,
+                        "bpjs_ketenagakerjaan" => $request->bpjs_ketenagakerjaan,
+                    ]);
+    
+                    Session::flash('success', 'Data berhasil diperbaharui');
+                    return redirect('/data/karyawan');
+                }
+    
+                if ($category == 'tad') {
+                    $tad->create([
+                        "nama" => $request->nama,
+                        "kelamin" => $request->kelamin,
+                        "tempat_lahir" => $request->tempat_lahir,
+                        "tanggal_lahir" => $request->tanggal_lahir,
+                        "pendidikan" => $request->pendidikan,
+                        "status_kontrak" => $request->status_kontrak,
+                        "jabatan" => $request->jabatan,
+                        "posisi" => $request->posisi,
+                        "bidang" => $request->bidang,
+                        "jurusan" => $request->jurusan,
+                        "usia" => $request->usia,
+                        "alamat" => $request->alamat,
+                        "agama" => $request->agama,
+                        "mkp" => $request->mkp,
+                        "masa_kerja" => $request->masa_kerja,
+                        "no_ktp" => $request->no_ktp,
+                        "npwp" => $request->npwp,
+                        "bpjs_kesehatan" => $request->bpjs_kesehatan,
+                        "bpjs_ketenagakerjaan" => $request->bpjs_ketenagakerjaan,
+                    ]);
+    
+                    Session::flash('success', 'Data berhasil diperbaharui');
+                    return redirect('/data/tad');
+                }
+    
+                return;
+            } catch (\Throwable $th) {
+                if ($category == 'karyawan') {
+                    Session::flash('failed', 'Data gagal diperbaharui');
+                    return redirect('/data/karyawan');
+                }
+    
+                if ($category == 'tad') {
+                    Session::flash('failed', 'Data gagal diperbaharui');
+                    return redirect('/data/tad');
+                }
+            }
+        }
+        
+        return redirect('/');
+    }
 }

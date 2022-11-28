@@ -13,10 +13,10 @@
                     <h2 class="text-lg font-medium truncate mr-5">Form Tambah Data Karyawan</h2>
                 </div>
                 <div class="intro-y box px-5 pt-5 mt-5">
-                    <form class="py-10" action="{{ url('/edit/karyawan/'.'?category='.Request::query('category')) }}"
+                    <form class="py-10" action="{{ url('/form-karyawan'.'?category='.Request::query('category')) }}"
                         method="POST">
                         @csrf
-                        @method('PUT')
+                        @method('POST')
                         <div class="grid grid-cols-12 gap-4">
                             @if(Request::query('category') == 'karyawan')
                             <div class="col-span-12 sm:col-span-12 xl:col-span-2">
