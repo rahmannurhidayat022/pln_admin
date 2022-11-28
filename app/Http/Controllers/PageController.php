@@ -10,6 +10,7 @@ use App\Imports\TADImport;
 use App\Exports\TADExport;
 use App\Models\Karyawan;
 use App\Models\TAD;
+use App\Models\Bidang;
 use Illuminate\Support\Facades\Session;
 use Excel;
 
@@ -308,5 +309,11 @@ class PageController extends Controller
         } else {
             return redirect('/data/karyawan')->with('info', 'Pilih file');
         }
+    }
+
+    public function bidangpage(Bidang $bidang) {
+        $data = $bidang->orderBy('kode_bidang', 'asc')->get();
+
+        return view('pages.bidang', [ 'data' => $data ]);
     }
 }
