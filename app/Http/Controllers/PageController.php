@@ -100,16 +100,19 @@ class PageController extends Controller
         return redirect()->back();
     }
 
-    public function formKaryawan(Request $request, $id) {
+    public function formKaryawan(Request $request, Bidang $bidang, Jabatan $jabatan, $id) {
         $category = $request->query('category');
+        $bidangdata = $bidang->select('nama_bidang')->orderBy('nama_bidang', 'asc')->get();
+        $jabatandata = $jabatan->select('nama_jabatan')->orderBy('nama_jabatan', 'asc')->get();
+
         if ($category == 'karyawan') {
             $res = Karyawan::find($id);
-            return view('pages/edit_karyawan', compact('res'));
+            return view('pages/edit_karyawan', [ 'res' => $res, 'bidang' => $bidangdata, 'jabatan' => $jabatandata ]);
         }
 
         if ($category == 'tad') {
             $res = TAD::find($id);
-            return view('pages/edit_karyawan', compact('res'));
+            return view('pages/edit_karyawan', [ 'res' => $res, 'bidang' => $bidangdata, 'jabatan' => $jabatandata ]);
         }
 
         return redirect()->back();

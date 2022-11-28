@@ -154,15 +154,25 @@
                             <div class="col-span-12 sm:col-span-12 xl:col-span-2">
                                 <div class="mt-3">
                                     <label for="jabatan" class="form-label">Jabatan</label>
-                                    <input value="{{$res->jabatan}}" type="text" name="jabatan" id="jabatan"
-                                        class="form-control">
+                                    <select id="jabatan" name="jabatan" class="form-select sm:mr-2">
+                                        @foreach($jabatan as $item)
+                                        <option value="{{$item->nama_jabatan}}"
+                                            {{ $res->jabatan == $item->nama_jabatan ? 'selected' : '' }}>
+                                            {{$item->nama_jabatan}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-span-12 sm:col-span-12 xl:col-span-2">
                                 <div class="mt-3">
                                     <label for="bidang" class="form-label">Bidang</label>
-                                    <input value="{{$res->bidang}}" type="text" name="bidang" id="bidang"
-                                        class="form-control">
+                                    <select id="bidang" name="bidang" class="form-select sm:mr-2">
+                                        @foreach($bidang as $item)
+                                        <option value="{{$item->nama_bidang}}"
+                                            {{ $res->bidang == $item->nama_bidang ? 'selected' : '' }}>
+                                            {{$item->nama_bidang}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                             @if(Request::query('category') == 'tad')
