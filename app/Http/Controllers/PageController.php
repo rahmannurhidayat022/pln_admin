@@ -11,6 +11,7 @@ use App\Exports\TADExport;
 use App\Models\Karyawan;
 use App\Models\TAD;
 use App\Models\Bidang;
+use App\Models\Jabatan;
 use Illuminate\Support\Facades\Session;
 use Excel;
 
@@ -346,4 +347,42 @@ class PageController extends Controller
         Session::flash('success', 'Data berhasil dihapus');
         return redirect('/data/bidang');
     }
+
+    public function jabatanpage(Jabatan $jabatan) {
+        $data = $jabatan->orderBy('kode_jabatan', 'asc')->get();
+
+        return view('pages.jabatan', [ 'data' => $data ]);
+    }
+
+    public function createjabatan(Request $request, Jabatan $jabatan) {
+        $request->validate([
+            'kode_jabatan' => 'required',
+            'nama_jabatan' => 'required',
+            'superior' => 'required',
+        ]);
+
+        $filtered = $jabatan->where('kode_jabatan', '=', $request->input('kode_jabatan'))->get();
+        
+        if (count($filtered) > 0) {
+            Session::flash('failed', 'Nilai Kode Jabatan sudah dipakai');
+            return redirect('/data/jabatan'); 
+        }
+                
+        $data = $request->all();
+        $jabatan->create($data);
+
+        Session::flash('success', 'Data berhasil ditambahkan');
+        return redirect('/data/jabatan');
+    }
+
+    public function deletejabatan(Jabatan $jabatan, $id) {
+        $res = $jabatan->find($id)->delete();
+        if (!$res) {
+            Session::flash('failed', 'Data tidak ditemukan');
+            return redirect('/data/jabatan'); 
+        }
+        Session::flash('success', 'Data berhasil dihapus');
+        return redirect('/data/jabatan');
+    }
+
 }

@@ -46,5 +46,9 @@ Route::middleware('auth')->group(function() {
         Route::get('/data/bidang', 'bidangpage')->name('bidang');
         Route::post('/data/bidang', 'createbidang')->name('bidang.store');
         Route::delete('/data/bidang/{id}', 'deletebidang')->name('bidang.destroy');
+
+        Route::get('/data/jabatan', 'jabatanpage')->name('jabatan');
+        Route::post('/data/jabatan', 'createjabatan')->name('jabatan.store');
+        Route::delete('/data/jabatan/{id}', 'deletejabatan')->name('jabatan.destroy');
     });
 });
