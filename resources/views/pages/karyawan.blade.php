@@ -58,6 +58,7 @@ async function removeItem() {
                 </div>
                 <div class="intro-y box mt-5">
                     <div class="flex flex-col sm:flex-row items-center p-5 border-b border-slate-200/60">
+                        <a class="btn btn-primary mr-1 mb-2" href="/form-karyawan?category=karyawan">Tambah</a>
                         <!-- <button class="btn btn-primary mr-1 mb-2" data-tw-toggle="modal"
                             data-tw-target="#add-data">Tambah Data</button> -->
                         <button class="btn btn-outline-primary mr-1 mb-2" data-tw-toggle="modal"
@@ -70,7 +71,7 @@ async function removeItem() {
                         </a>
                         <!-- search karyawan data -->
                         <form action="{{ route('karyawan') }}" method="GET">
-                             <input type="text" name="search" placeholder="masukan name/nid" required/>
+                            <input type="text" name="search" placeholder="masukan name/nid" required />
                             <button type="submit" class="btn btn-primary mr-1 mb-2">Search</button>
                         </form>
                         <!-- button reload data -->
@@ -79,54 +80,53 @@ async function removeItem() {
                         </a>
                     </div>
 
-                        <div class="preview" style="display: block;">
-                            <div class="overflow-x-auto">
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th class="whitespace-nowrap">NID</th>
-                                            <th class="whitespace-nowrap">Nama</th>
-                                            <th class="whitespace-nowrap">Email</th>
-                                            <th class="whitespace-nowrap">Status</th>
-                                            <th class="whitespace-nowrap">Jabatan</th>
-                                            <th class="whitespace-nowrap">Bidang</th>
-                                            <th class="whitespace-nowrap">Bagian</th>
-                                            <th class="whitespace-nowrap"></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @if(count($karyawans) > 0)
-                                        @foreach($karyawans as $item)
-                                        <tr>
-                                            <td>{{$item->nid}}</td>
-                                            <td>{{$item->nama}}</td>
-                                            <td>{{$item->email}}</td>
-                                            <td>{{$item->status_kepegawaian}}</td>
-                                            <td>{{$item->jabatan}}</td>
-                                            <td>{{$item->bidang}}</td>
-                                            <td>{{$item->bagian}}</td>
-                                            <td>
-                                                <a href="{{ url('/data/karyawan/'.$item->id).'?category=karyawan' }}"
-                                                    class="btn btn-dark mr-1 mb-2">
-                                                    <i data-lucide="eye" class="w-5 h-5"></i>
-                                                </a>
-                                                <a href="{{ url('/edit/karyawan/'.$item->id).'?category=karyawan' }}"
-                                                    class="btn btn-warning mr-1 mb-2">
-                                                    <i data-lucide="edit" class="w-5 h-5"></i>
-                                                </a>
-                                                <button class="btn btn-danger mr-1 mb-2" data-tw-toggle="modal"
-                                                    data-tw-target="#delete" onclick="getId({{$item->id}})">
-                                                    <i data-lucide="trash" class="w-5 h-5"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        @endforeach
-                                        @endif
-                                    </tbody>
-                                </table>
-                                <div class="mt-3">
-                                    {{ $karyawans->links('pagination::tailwind') }}
-                                </div>
+                    <div class="preview" style="display: block;">
+                        <div class="overflow-x-auto">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th class="whitespace-nowrap">NID</th>
+                                        <th class="whitespace-nowrap">Nama</th>
+                                        <th class="whitespace-nowrap">Email</th>
+                                        <th class="whitespace-nowrap">Status</th>
+                                        <th class="whitespace-nowrap">Jabatan</th>
+                                        <th class="whitespace-nowrap">Bidang</th>
+                                        <th class="whitespace-nowrap">Bagian</th>
+                                        <th class="whitespace-nowrap"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if(count($karyawans) > 0)
+                                    @foreach($karyawans as $item)
+                                    <tr>
+                                        <td>{{$item->nid}}</td>
+                                        <td>{{$item->nama}}</td>
+                                        <td>{{$item->email}}</td>
+                                        <td>{{$item->status_kepegawaian}}</td>
+                                        <td>{{$item->jabatan}}</td>
+                                        <td>{{$item->bidang}}</td>
+                                        <td>{{$item->bagian}}</td>
+                                        <td>
+                                            <a href="{{ url('/data/karyawan/'.$item->id).'?category=karyawan' }}"
+                                                class="btn btn-dark mr-1 mb-2">
+                                                <i data-lucide="eye" class="w-5 h-5"></i>
+                                            </a>
+                                            <a href="{{ url('/edit/karyawan/'.$item->id).'?category=karyawan' }}"
+                                                class="btn btn-warning mr-1 mb-2">
+                                                <i data-lucide="edit" class="w-5 h-5"></i>
+                                            </a>
+                                            <button class="btn btn-danger mr-1 mb-2" data-tw-toggle="modal"
+                                                data-tw-target="#delete" onclick="getId({{$item->id}})">
+                                                <i data-lucide="trash" class="w-5 h-5"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                    @endif
+                                </tbody>
+                            </table>
+                            <div class="mt-3">
+                                {{ $karyawans->links('pagination::tailwind') }}
                             </div>
                         </div>
                     </div>
@@ -134,6 +134,7 @@ async function removeItem() {
             </div>
         </div>
     </div>
+</div>
 </div>
 <div id="upload_file" class="modal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">

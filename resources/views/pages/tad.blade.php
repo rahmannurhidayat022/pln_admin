@@ -58,6 +58,7 @@ async function removeItem() {
                 </div>
                 <div class="intro-y box mt-5">
                     <div class="flex flex-col sm:flex-row items-center p-5 border-b border-slate-200/60">
+                        <a class="btn btn-primary mr-1 mb-2" href="/form-karyawan?category=tad">Tambah</a>
                         <!-- <button class="btn btn-primary mr-1 mb-2" data-tw-toggle="modal"
                             data-tw-target="#add-data">Tambah Data</button> -->
                         <button class="btn btn-outline-primary mr-1 mb-2" data-tw-toggle="modal"
@@ -70,7 +71,7 @@ async function removeItem() {
                         </a>
                         <!-- search karyawan data -->
                         <form action="{{ route('tad') }}" method="GET">
-                             <input type="text" name="search" placeholder="masukan nama" required/>
+                            <input type="text" name="search" placeholder="masukan nama" required />
                             <button type="submit" class="btn btn-primary mr-1 mb-2">Search</button>
                         </form>
                         <!-- button reload data -->

@@ -94,7 +94,7 @@
                                     </svg>
                                 </div>
                                 <div class="side-menu__title">
-                                    Karyawan
+                                    PJB/PJBS
                                 </div>
                             </a>
                             <a href="{{url('data/tad')}}" class="side-menu">

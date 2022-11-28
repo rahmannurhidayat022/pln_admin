@@ -385,4 +385,14 @@ class PageController extends Controller
         return redirect('/data/jabatan');
     }
 
+    public function formkaryawanpage(Request $request, Bidang $bidang, Jabatan $jabatan) {
+        if($request->query('category') && $request->query('category') == "karyawan" || $request->query('category') == "tad") {
+            $bidangdata = $bidang->select('nama_bidang')->orderBy('nama_bidang', 'asc')->get();
+            $jabatandata = $jabatan->select('nama_jabatan')->orderBy('nama_jabatan', 'asc')->get();
+
+            return view('pages.form_karyawan', [ 'bidang' => $bidangdata, 'jabatan' => $jabatandata ]);
+        }
+        
+        return redirect('/');
+    }
 }

@@ -50,5 +50,7 @@ Route::middleware('auth')->group(function() {
         Route::get('/data/jabatan', 'jabatanpage')->name('jabatan');
         Route::post('/data/jabatan', 'createjabatan')->name('jabatan.store');
         Route::delete('/data/jabatan/{id}', 'deletejabatan')->name('jabatan.destroy');
+
+        Route::get('/form-karyawan', 'formkaryawanpage')->name('formkaryawan');
     });
 });
