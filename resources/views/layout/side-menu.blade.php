@@ -58,6 +58,19 @@
                     <ul class="{{ Route::currentRouteName() === 'karyawan' ? 'side-menu__sub-open' : (Route::currentRouteName() === 'tad' ? 'side-menu__sub-open' : (Route::currentRouteName() === 'karyawan.detail' ? 'side-menu__sub-open' : '')) }}"
                         style="display: {{ Route::currentRouteName() === 'karyawan' ? 'block' : (Route::currentRouteName() === 'tad' ? 'block' : (Route::currentRouteName() === 'karyawan.detail' ? 'block' : 'none')) }};">
                         <li>
+                            <a href="{{url('data/bidang')}}" class="side-menu">
+                                <div class="side-menu__icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" icon-name="activity" data-lucide="activity"
+                                        class="lucide lucide-activity">
+                                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                                    </svg>
+                                </div>
+                                <div class="side-menu__title">
+                                    Bidang
+                                </div>
+                            </a>
                             <a href="{{url('data/karyawan')}}" class="side-menu">
                                 <div class="side-menu__icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
