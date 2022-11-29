@@ -70,6 +70,7 @@ async function removeItem() {
                                         <tr>
                                             <th class="whitespace-nowrap">Kode</th>
                                             <th class="whitespace-nowrap">Nama</th>
+                                            <th class="whitespace-nowrap">Jenjang</th>
                                             <th class="whitespace-nowrap">Superior</th>
                                             <th class="whitespace-nowrap"></th>
                                         </tr>
@@ -80,6 +81,7 @@ async function removeItem() {
                                         <tr>
                                             <td>{{$item->kode_jabatan}}</td>
                                             <td>{{$item->nama_jabatan}}</td>
+                                            <td>{{$item->jenjang}}</td>
                                             <td>{{$item->superior}}</td>
                                             <td>
                                                 <button class="btn btn-danger mr-1 mb-2" data-tw-toggle="modal"
@@ -128,10 +130,61 @@ async function removeItem() {
                             placeholder="HRD" required />
                     </div>
                     <div class="mb-2 flex flex-col items-start gap-2">
+                        <label class="font-medium text-[16px]" id="jenjang">Jenjang:</label>
+                        <select class="w-full py-3 px-2 rounded" name="jenjang" id="jenjang">
+                            <option value="MA">MA</option>
+                            <option value="MM">MM</option>
+                            <option value="MD">MD</option>
+                            <option value="SPV-A">SPV-A</option>
+                            <option value="SPV-D">SPV-D</option>
+                            <option value="F1">F1</option>
+                            <option value="F2">F2</option>
+                            <option value="F3">F3</option>
+                            <option value="F4">F4</option>
+                            <option value="F5">F5</option>
+                            <option value="F6">F6</option>
+                            <option value="Helper">Helper</option>
+                        </select>
+                    </div>
+                    <div class="mb-2 flex flex-col items-start gap-2">
                         <label class="font-medium text-[16px]" id="nama_jabatan">Superior:</label>
                         <select class="w-full py-3 px-2 rounded" name="superior" id="superior">
-                            <option value="TOP">TOP</option>
-                            <option value="GM">GM</option>
+                            <option value="GENERAL MANAGER">GENERAL MANAGER</option>
+                            <option value="MANAJER ENJINIRING & QA">MANAJER ENJINIRING & QA</option>
+                            <option value="SPV SENIOR SYSTEM OWNER TURBINE & AUX">SPV SENIOR SYSTEM OWNER TURBINE & AUX</option>
+                            <option value="SPV SENIOR SYSTEM OWNER BOILER & AUX">SPV SENIOR SYSTEM OWNER BOILER & AUX</option>
+                            <option value="SPV SENIOR SYSTEM OWNER COMMON AUX">SPV SENIOR SYSTEM OWNER COMMON AUX</option>
+                            <option value="SPV SENIOR COMPONENT ANALYST">SPV SENIOR COMPONENT ANALYST</option>
+                            <option value="SPV SENIOR CONDITION BASED MAINTENANCE">SPV SENIOR CONDITION BASED MAINTENANCE</option>
+                            <option value="SPV SENIOR MANAJEMEN MUTU & KINERJA">SPV SENIOR MANAJEMEN MUTU & KINERJA</option>
+                            <option value="SPV SENIOR MANAJEMEN RISIKO & KEPATUHAN">SPV SENIOR MANAJEMEN RISIKO & KEPATUHAN</option>
+                            <option value="MANAJER OPERASI">MANAJER OPERASI</option>
+                            <option value="SPV SENIOR RENDAL OPERASI">SPV SENIOR RENDAL OPERASI</option>
+                            <option value="SPV SENIOR PRODUKSI A">SPV SENIOR PRODUKSI A</option>
+                            <option value="SPV SENIOR PRODUKSI B">SPV SENIOR PRODUKSI B</option>
+                            <option value="SPV SENIOR PRODUKSI C">SPV SENIOR PRODUKSI C</option>
+                            <option value="SPV SENIOR PRODUKSI D">SPV SENIOR PRODUKSI D</option>
+                            <option value="SUPERVISOR COAL & ASH HANDLING A">SUPERVISOR COAL & ASH HANDLING A</option>
+                            <option value="SUPERVISOR COAL & ASH HANDLING B">SUPERVISOR COAL & ASH HANDLING B</option>
+                            <option value="SUPERVISOR COAL & ASH HANDLING C">SUPERVISOR COAL & ASH HANDLING C</option>
+                            <option value="SUPERVISOR COAL & ASH HANDLING D">SUPERVISOR COAL & ASH HANDLING D</option>
+                            <option value="SPV SENIOR KIMIA">SPV SENIOR KIMIA</option>
+                            <option value="MANAJER PEMELIHARAAN">MANAJER PEMELIHARAAN</option>
+                            <option value="SPV SENIOR RENDAL PEMELIHARAAN">SPV SENIOR RENDAL PEMELIHARAAN</option>
+                            <option value="SPV SENIOR OUTAGE MANAGEMENT">SPV SENIOR OUTAGE MANAGEMENT</option>
+                            <option value="SPV SENIOR HAR MESIN 1 (B,T & AAB)">SPV SENIOR HAR MESIN 1 (B,T & AAB)</option>
+                            <option value="SPV SENIOR HAR MESIN 2 (SIST.BB & ABU)">SPV SENIOR HAR MESIN 2 (SIST.BB & ABU)</option>
+                            <option value="SPV SENIOR HAR LISTRIK">SPV SENIOR HAR LISTRIK</option>
+                            <option value="SPV SENIOR SARANA">SPV SENIOR SARANA</option>
+                            <option value="SPV SENIOR LINGKUNGAN">SPV SENIOR LINGKUNGAN</option>
+                            <option value="MANAJER LOGISTIK">MANAJER LOGISTIK</option>
+                            <option value="SPV SENIOR INVENTORI KTRL & KATALOGER">SPV SENIOR INVENTORI KTRL & KATALOGER</option>
+                            <option value="SPV SENIOR PENGADAAN">SPV SENIOR PENGADAAN</option>
+                            <option value="SPV SENIOR ADMIN. GUDANG">SPV SENIOR ADMIN. GUDANG</option>
+                            <option value="MANAJER KEU & ADMIN">MANAJER KEU & ADMIN</option>
+                            <option value="SPV SENIOR KEUANGAN">SPV SENIOR KEUANGAN</option>
+                            <option value="SPV SENIOR SDM">SPV SENIOR SDM</option>
+                            <option value="SPV SENIOR UMUM & CSR">SPV SENIOR UMUM & CSR</option>
                         </select>
                     </div>
                     <div class="mt-3">

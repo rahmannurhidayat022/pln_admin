@@ -361,6 +361,7 @@ class PageController extends Controller
         $request->validate([
             'kode_jabatan' => 'required',
             'nama_jabatan' => 'required',
+            'jenjang' => 'required',
             'superior' => 'required',
         ]);
 
